@@ -45,7 +45,7 @@ export default function Checkout() {
   if (pedidoConfirmado) {
     return (
       <div className="container" style={{ padding: 60, textAlign: 'center', maxWidth: 560 }}>
-        <h1>Pedido recebido! 🎉</h1>
+        <h1>Pedido recebido!</h1>
         <p style={{ color: 'var(--color-cocoa-soft)' }}>
           Obrigado, {pedidoConfirmado.customer_name.split(' ')[0]}! Vamos confirmar os detalhes e
           entrar em contato pelo telefone informado.

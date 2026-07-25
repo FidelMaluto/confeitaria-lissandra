@@ -26,7 +26,7 @@ export default function Home() {
           }}
         >
           <div>
-            <span className="eyebrow">Confeitaria artesanal</span>
+            <span className="eyebrow">Confeitaria da Lisandra</span>
             <h1 style={{ fontSize: '3rem', lineHeight: 1.1, margin: '12px 0 20px' }}>
               Doces que parecem<br />feitos de carinho.
             </h1>

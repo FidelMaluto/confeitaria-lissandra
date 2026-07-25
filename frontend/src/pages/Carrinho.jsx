@@ -37,7 +37,7 @@ export default function Carrinho() {
                   <strong>{item.name}</strong>
                   <br />
                   <span style={{ color: 'var(--color-cocoa-soft)', fontSize: '0.85rem' }}>
-                    R$ {Number(item.price).toFixed(2)} un.
+                    KZ$ {Number(item.price).toFixed(2)} un.
                   </span>
                 </td>
                 <td>
@@ -47,7 +47,7 @@ export default function Carrinho() {
                     <button className="btn btn-ghost" onClick={() => updateQuantity(item.product_id, item.quantity + 1)}>+</button>
                   </div>
                 </td>
-                <td>R$ {(item.price * item.quantity).toFixed(2)}</td>
+                <td>KZ$ {(item.price * item.quantity).toFixed(2)}</td>
                 <td>
                   <button className="btn btn-ghost" onClick={() => removeItem(item.product_id)} aria-label={`Remover ${item.name}`}>
                     ✕
@@ -60,7 +60,7 @@ export default function Carrinho() {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 24 }}>
           <span style={{ fontSize: '1.3rem', fontWeight: 700 }}>
-            Total: <span style={{ color: 'var(--color-rose-deep)' }}>R$ {total.toFixed(2)}</span>
+            Total: <span style={{ color: 'var(--color-rose-deep)' }}>KZ$ {total.toFixed(2)}</span>
           </span>
           <Link to="/checkout" className="btn btn-primary">Finalizar pedido</Link>
         </div>

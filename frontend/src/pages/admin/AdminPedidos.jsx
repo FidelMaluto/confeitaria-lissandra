@@ -75,7 +75,7 @@ export default function AdminPedidos() {
               )}
               {p.notes && <p style={{ fontSize: '0.9rem', color: 'var(--color-cocoa-soft)' }}>📝 {p.notes}</p>}
 
-              <strong>Total: R$ {Number(p.total).toFixed(2)}</strong>
+              <strong>Total: KZ$ {Number(p.total).toFixed(2)}</strong>
             </div>
           ))}
         </div>

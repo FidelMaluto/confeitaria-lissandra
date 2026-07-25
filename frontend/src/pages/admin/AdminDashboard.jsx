@@ -4,7 +4,7 @@ export default function AdminDashboard() {
   return (
     <div className="container" style={{ padding: '48px 24px' }}>
       <span className="eyebrow">Painel administrativo</span>
-      <h1 style={{ marginBottom: 28 }}>Bem-vinda(o) de volta 🎂</h1>
+      <h1 style={{ marginBottom: 28 }}>Bem-vinda(o) de volta</h1>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20 }}>
         <Link to="/admin/produtos" className="card" style={{ padding: 28, display: 'block' }}>
