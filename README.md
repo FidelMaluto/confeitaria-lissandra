@@ -1,6 +1,6 @@
-# Doce Encanto — Site de Confeitaria
+# Doces Tentações — Site de Confeitaria
 
-Loja completa com carrinho, pedidos e painel administrativo.
+Loja completa com carrinho (Ainda pendente, a espera do feed do Boss), pedidos e painel administrativo.
 
 **Stack:** React (Vite) · Node.js + Express · PostgreSQL via Supabase (banco + autenticação)
 
