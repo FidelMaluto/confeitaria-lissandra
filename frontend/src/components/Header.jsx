@@ -21,7 +21,7 @@ export default function Header() {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 24px' }}
       >
         <Link to="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }}>
-          Doce Encanto
+          Doces Tentações
         </Link>
 
         <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
@@ -32,7 +32,7 @@ export default function Header() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <Link to="/carrinho" className="btn btn-secondary" style={{ padding: '10px 18px' }}>
-            🧺 Carrinho{count > 0 ? ` (${count})` : ''}
+            Carrinho{count > 0 ? ` (${count})` : ''}
           </Link>
           {user ? (
             <button className="btn btn-ghost" onClick={signOut}>Sair</button>

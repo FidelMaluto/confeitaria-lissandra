@@ -10,19 +10,19 @@ export default function Footer() {
           style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
         >
           <div>
-            <h3 style={{ fontSize: '1.2rem' }}>Doce Encanto</h3>
+            <h3 style={{ fontSize: '1.2rem' }}>Doces Tentações</h3>
             <p style={{ color: 'var(--color-cocoa-soft)', maxWidth: 320 }}>
               Bolos, doces finos e tortas feitos à mão, todos os dias, com ingredientes selecionados.
             </p>
           </div>
           <div>
             <p style={{ fontWeight: 700, marginBottom: 6 }}>Contato</p>
-            <p style={{ color: 'var(--color-cocoa-soft)' }}>WhatsApp: (00) 00000-0000</p>
-            <p style={{ color: 'var(--color-cocoa-soft)' }}>Seg a Sáb, 9h às 19h</p>
+            <p style={{ color: 'var(--color-cocoa-soft)' }}>WhatsApp: (+244) 999-999-999</p>
+            <p style={{ color: 'var(--color-cocoa-soft)' }}>Seg a dom, 9h às 19h</p>
           </div>
         </div>
         <p style={{ textAlign: 'center', marginTop: 24, fontSize: '0.85rem', color: 'var(--color-cocoa-soft)' }}>
-          © {new Date().getFullYear()} Doce Encanto. Feito com carinho.
+          © {new Date().getFullYear()} Doces Tentações. Feito com carinho.
         </p>
       </div>
     </footer>

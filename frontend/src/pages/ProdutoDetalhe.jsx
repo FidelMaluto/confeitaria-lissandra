@@ -48,7 +48,7 @@ export default function ProdutoDetalhe() {
         <h1 style={{ marginTop: 12 }}>{produto.name}</h1>
         <p style={{ color: 'var(--color-cocoa-soft)', fontSize: '1.05rem' }}>{produto.description}</p>
         <p style={{ fontSize: '1.8rem', color: 'var(--color-rose-deep)', fontWeight: 700, margin: '20px 0' }}>
-          R$ {Number(produto.price).toFixed(2)}
+          KZ$ {Number(produto.price).toFixed(2)}
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>

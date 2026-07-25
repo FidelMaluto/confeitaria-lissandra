@@ -33,7 +33,7 @@ export default function ProductCard({ product }) {
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <strong style={{ color: 'var(--color-rose-deep)', fontSize: '1.15rem' }}>
-            R$ {Number(product.price).toFixed(2)}
+            KZ$ {Number(product.price).toFixed(2)}
           </strong>
           <button className="btn btn-primary" onClick={() => addItem(product)}>
             Adicionar
