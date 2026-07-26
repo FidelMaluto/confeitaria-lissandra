@@ -2,9 +2,9 @@ import ScallopDivider from './ScallopDivider';
 
 export default function Footer() {
   return (
-    <footer style={{ marginTop: 80 }}>
+    <footer className='footer' style={{ marginTop: 80 }}>
       <ScallopDivider color="var(--color-baby-pink)" />
-      <div style={{ background: 'var(--color-baby-pink)', padding: '36px 24px' }}>
+      <div style={{ background: 'var(--color-baby-pink)', padding: '20px 18px' }}>
         <div
           className="container"
           style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
@@ -16,12 +16,13 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <p style={{ fontWeight: 700, marginBottom: 6 }}>Contato</p>
+            <p style={{ fontWeight: 700, marginBottom: 6 }}>Contatos</p>
             <p style={{ color: 'var(--color-cocoa-soft)' }}>WhatsApp: (+244) 999-999-999</p>
+            <p style={{ color: 'var(--color-cocoa-soft)' }}>Instagram: @docestentacoes</p>
             <p style={{ color: 'var(--color-cocoa-soft)' }}>Seg a dom, 9h às 19h</p>
           </div>
         </div>
-        <p style={{ textAlign: 'center', marginTop: 24, fontSize: '0.85rem', color: 'var(--color-cocoa-soft)' }}>
+        <p style={{ textAlign: 'center', marginTop: 10, fontSize: '0.85rem', color: 'var(--color-cocoa-soft)' }}>
           © {new Date().getFullYear()} Doces Tentações. Feito com carinho.
         </p>
       </div>

@@ -201,3 +201,21 @@ th {
   letter-spacing: 0.06em;
   color: var(--color-cocoa-soft);
 }
+
+/* Header */
+
+/* ProductCard */
+
+/* ProdutRoute */
+
+/* ScallopDivider */
+
+/* Footer */
+.footer {
+  padding: 5px auto;
+  background-color: #c25f74;
+}
+
+.footer p {
+  margin-bottom: .1px;
+}
