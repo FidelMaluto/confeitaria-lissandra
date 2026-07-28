@@ -90,8 +90,10 @@ export default function Checkout() {
         <div className="field">
           <label htmlFor="payment_method">Forma de pagamento</label>
           <select id="payment_method" name="payment_method" value={form.payment_method} onChange={handleChange}>
-            <option value="pix">Pix</option>
+            <option value="pix">MultCaixa Express</option>
             <option value="cartao">Cartão na entrega</option>
+            <option value="paypay">Paypay</option>
+            <option value="kwihi">Kwiki</option>
             <option value="dinheiro">Dinheiro na entrega</option>
           </select>
         </div>
