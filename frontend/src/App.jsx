@@ -15,6 +15,8 @@ import MeusPedidos from './pages/MeusPedidos';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProdutos from './pages/admin/AdminProdutos';
 import AdminPedidos from './pages/admin/AdminPedidos';
+import Contactos from './pages/Contactos';
+import Sobre from './pages/Sobre';
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/contactos" element={<Contactos />} />
+          <Route path="/sobre" element={<Sobre />} />
           <Route path="/produto/:slug" element={<ProdutoDetalhe />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/checkout" element={<Checkout />} />
