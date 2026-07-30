@@ -549,7 +549,7 @@ export default function Catalogo() {
 
             <img
               className="hero-image"
-              src='../images/logo.png'
+              src='.././images/logo.png'
               alt="Bolo de chocolate"
             />
 

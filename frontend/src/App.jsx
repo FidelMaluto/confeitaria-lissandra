@@ -17,6 +17,7 @@ import AdminProdutos from './pages/admin/AdminProdutos';
 import AdminPedidos from './pages/admin/AdminPedidos';
 import Contactos from './pages/Contactos';
 import Sobre from './pages/Sobre';
+import Perfil from './pages/Perfil';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/contactos" element={<Contactos />} />
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/produto/:slug" element={<ProdutoDetalhe />} />
           <Route path="/carrinho" element={<Carrinho />} />
