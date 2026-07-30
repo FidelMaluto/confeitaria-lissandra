@@ -1,95 +1,314 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import { useState } from 'react';
 
 export default function Header() {
+
   const { user, isAdmin, signOut } = useAuth();
   const { count } = useCart();
+
+  const [menuAberto, setMenuAberto] = useState(false);
 
   const linkStyle = ({ isActive }) => ({
     fontWeight: 700,
     fontSize: '0.95rem',
     color: isActive ? 'var(--color-rose-deep)' : 'var(--color-cocoa)',
-    borderBottom: isActive ? '2px solid var(--color-rose)' : '2px solid transparent',
+    borderBottom: isActive
+      ? '2px solid var(--color-rose)'
+      : '2px solid transparent',
     paddingBottom: 4,
-  });
-  const linkStyle2 = ({ isActive }) => ({
-    display: 'flex',
-    justifyContent: 'space-between',
-    fontWeight: 700,
-    fontSize: '0.95rem',
-    color: isActive ? 'var(--color-rose-deep)' : 'var(--color-cocoa)',
-    paddingBottom: 4,
-  });
-  const inputStyle = ({
-    borderRadius: '15px',
-    padding: '5px',
-    outline: 'solid 1px #c25',
-    border: 'none',
-    marginInline: '',
-  });
-  const selectStyle = ({
-    borderRadius: '8px',
-    padding: '5px',
-    outline: 'solid 1px #ddd',
-    border: 'none',
-    wiidth: '2rem',
-    marginInline: '.5vh',
-    background: 'white',
   });
 
+  const fecharMenu = () => {
+    setMenuAberto(false);
+  };
 
   return (
-    <header
-      style={{
-        background: 'var(--color-cream)',
-        borderBottom: '1px solid var(--color-border)',
-        width: '100%',
-      }}
-    >
-  <div
-    className="container"
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '26px 10px',
-      width: '100%',
-      maxWidth: 'none',
-      background: 'var(--color-cream)',
-    }}
-  >
-        <Link to="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }}>
-          Doces Tentações
-        </Link>
+    <>
+      <style>{`
 
-        <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
-          <NavLink to="/" style={linkStyle} end>Início</NavLink>
-          <NavLink to="/catalogo" style={linkStyle}>Catálogo</NavLink>
-          <NavLink to="/contactos" style={linkStyle} end>Contactos</NavLink>
-          <NavLink to="/sobre" style={linkStyle} end>Sobre</NavLink>
-          <NavLink to="/perfil" style={linkStyle} end>Perfil</NavLink>
-          <NavLink to="#" style={linkStyle2}><nav><input type='text' style={inputStyle} placeholder='Pesquisar'/></nav><select style={selectStyle}>
-            <option>Filtrar</option>
-            <option>Produtos</option>
-            <option>Cursos</option>
-            <option>Vagas</option>
-          </select>
-          </NavLink>
-          {isAdmin && <NavLink to="/admin" style={linkStyle}>Painel Admin</NavLink>}
-        </nav>
+        .header{
+          width:100%;
+          background:var(--color-cream);
+          border-bottom:1px solid var(--color-border);
+        }
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <Link to="/carrinho" className="btn btn-secondary" style={{ padding: '10px 18px' }}>
-            Carrinho{count > 0 ? ` (${count})` : ''}
+        .header-container{
+          width:100%;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          padding:20px;
+          gap:20px;
+        }
+
+        .header-logo{
+          font-family:var(--font-display);
+          font-size:1.5rem;
+          font-weight:700;
+          white-space:nowrap;
+        }
+
+        .header-nav{
+          display:flex;
+          align-items:center;
+          gap:28px;
+        }
+
+        .header-actions{
+          display:flex;
+          align-items:center;
+          gap:14px;
+        }
+
+        .menu-button{
+          display:none;
+          background:none;
+          border:none;
+          font-size:2rem;
+          cursor:pointer;
+        }
+
+        .overlay{
+          position:fixed;
+          inset:0;
+          background:rgba(0,0,0,.45);
+          z-index:999;
+        }
+
+        .sidebar-menu{
+          position:fixed;
+          top:0;
+          left:0;
+          height:100vh;
+          width:280px;
+          background:white;
+          z-index:1000;
+          padding:25px;
+          transform:translateX(-100%);
+          transition:.3s ease;
+          display:flex;
+          flex-direction:column;
+          gap:25px;
+        }
+
+        .sidebar-menu.open{
+          transform:translateX(0);
+        }
+
+        .sidebar-header{
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        }
+
+        .close-menu{
+          border:none;
+          background:none;
+          font-size:2rem;
+          cursor:pointer;
+        }
+
+        .sidebar-links{
+          display:flex;
+          flex-direction:column;
+          gap:20px;
+        }
+
+        .sidebar-links a{
+          text-decoration:none;
+          color:var(--color-cocoa);
+          font-weight:700;
+        }
+
+        .sidebar-actions{
+          display:flex;
+          flex-direction:column;
+          gap:12px;
+        }
+
+        @media(max-width:900px){
+
+          .header-container{
+            padding:15px;
+          }
+
+          .header-nav,
+          .header-actions{
+            display:none;
+          }
+
+          .menu-button{
+            display:block;
+          }
+
+        }
+
+      `}</style>
+
+      <header className="header">
+
+        <div className="header-container">
+
+          <Link to="/" className="header-logo">
+            Doces Tentações
           </Link>
-          {user ? (
-            <button className="btn btn-ghost" onClick={signOut}>Sair</button>
-          ) : (
-            <Link to="/login" className="btn btn-primary">Entrar</Link>
-          )}
+
+          <nav className="header-nav">
+
+            <NavLink to="/" style={linkStyle} end>
+              Início
+            </NavLink>
+
+            <NavLink to="/catalogo" style={linkStyle}>
+              Catálogo
+            </NavLink>
+
+            <NavLink to="/contactos" style={linkStyle}>
+              Contactos
+            </NavLink>
+
+            <NavLink to="/sobre" style={linkStyle}>
+              Sobre
+            </NavLink>
+
+            <NavLink to="/perfil" style={linkStyle}>
+              Perfil
+            </NavLink>
+
+            {isAdmin && (
+              <NavLink to="/admin" style={linkStyle}>
+                Painel Admin
+              </NavLink>
+            )}
+
+          </nav>
+
+          <div className="header-actions">
+
+            <Link
+              to="/carrinho"
+              className="btn btn-secondary"
+            >
+              Carrinho {count > 0 && `(${count})`}
+            </Link>
+
+            {user ? (
+              <button
+                className="btn btn-ghost"
+                onClick={signOut}
+              >
+                Sair
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="btn btn-primary"
+              >
+                Entrar
+              </Link>
+            )}
+
+          </div>
+
+          <button
+            className="menu-button"
+            onClick={() => setMenuAberto(true)}
+          >
+            ☰
+          </button>
+
         </div>
+
+      </header>
+
+
+      {menuAberto && (
+        <div
+          className="overlay"
+          onClick={fecharMenu}
+        />
+      )}
+
+
+      <div className={`sidebar-menu ${menuAberto ? "open" : ""}`}>
+
+        <div className="sidebar-header">
+
+          <strong>
+            Menu
+          </strong>
+
+          <button
+            className="close-menu"
+            onClick={fecharMenu}
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div className="sidebar-links">
+
+          <NavLink to="/" onClick={fecharMenu}>
+            Início
+          </NavLink>
+
+          <NavLink to="/catalogo" onClick={fecharMenu}>
+            Catálogo
+          </NavLink>
+
+          <NavLink to="/contactos" onClick={fecharMenu}>
+            Contactos
+          </NavLink>
+
+          <NavLink to="/sobre" onClick={fecharMenu}>
+            Sobre
+          </NavLink>
+
+          <NavLink to="/perfil" onClick={fecharMenu}>
+            Perfil
+          </NavLink>
+
+          {isAdmin && (
+            <NavLink to="/admin" onClick={fecharMenu}>
+              Painel Admin
+            </NavLink>
+          )}
+
+        </div>
+
+
+        <div className="sidebar-actions">
+
+          <Link
+            to="/carrinho"
+            className="btn btn-secondary"
+          >
+            Carrinho {count > 0 && `(${count})`}
+          </Link>
+
+          {user ? (
+            <button
+              className="btn btn-ghost"
+              onClick={signOut}
+            >
+              Sair
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="btn btn-primary"
+            >
+              Entrar
+            </Link>
+          )}
+
+        </div>
+
       </div>
-    </header>
+    </>
   );
 }
