@@ -50,9 +50,8 @@ export default function Home() {
               fontSize: '6rem',
               boxShadow: 'var(--shadow-soft)',
             }}
-            aria-hidden="true"
-          >
-            🎂
+            aria-hidden="true">
+            <img src="../images/IMG-20260802-WA0007.jpg" alt="" />
           </div>
         </div>
       </section>
