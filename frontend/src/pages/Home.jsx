@@ -26,9 +26,9 @@ export default function Home() {
           }}
         >
           <div>
-            <span className="eyebrow">Confeitaria da Lisandra</span>
+            <span className="eyebrow">Confeitaria da Lissandra</span>
             <h1 style={{ fontSize: '3rem', lineHeight: 1.1, margin: '12px 0 20px' }}>
-              Doces que parecem<br />feitos de carinho.
+              Vicia-te nos<br />nossos sabores.
             </h1>
             <p style={{ fontSize: '1.05rem', color: 'var(--color-cocoa-soft)', maxWidth: 460 }}>
               Bolos, tortas e doces finos preparados do zero, todos os dias, com receita de família
@@ -50,9 +50,8 @@ export default function Home() {
               fontSize: '6rem',
               boxShadow: 'var(--shadow-soft)',
             }}
-            aria-hidden="true"
-          >
-            🎂
+            aria-hidden="true">
+            <img src="../images/IMG-20260802-WA0007.jpg" alt="" />
           </div>
         </div>
       </section>

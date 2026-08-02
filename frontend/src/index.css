@@ -202,6 +202,11 @@ th {
   color: var(--color-cocoa-soft);
 }
 
+/* Home */
+img {
+  width: 50%;
+}
+
 /* Header */
 
 /* ProductCard */
