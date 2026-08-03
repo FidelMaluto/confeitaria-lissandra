@@ -8,6 +8,10 @@ export default function Header() {
   const { count } = useCart();
   const [menuAberto, setMenuAberto] = useState(false);
 
+  function fechar() {
+    setMenuAberto(false);
+  }
+
   const linkStyle = ({ isActive }) => ({
     fontWeight: 700,
     fontSize: '0.95rem',
@@ -16,33 +20,70 @@ export default function Header() {
     paddingBottom: 4,
   });
 
-  function fechar() {
-    setMenuAberto(false);
-  }
+  const searchWrapStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    flexWrap: 'wrap',
+  };
+
+  const inputStyle = {
+    borderRadius: '15px',
+    padding: '8px 12px',
+    outline: 'none',
+    border: '1px solid #e0b8c1',
+    minHeight: 40,
+  };
+
+  const selectStyle = {
+    borderRadius: '8px',
+    padding: '8px',
+    outline: 'none',
+    border: '1px solid #ddd',
+    minHeight: 40,
+    background: 'white',
+  };
 
   return (
-    <header style={{ background: 'var(--color-cream)', borderBottom: '1px solid var(--color-border)', position: 'sticky', top: 0, zIndex: 20 }}>
+    <header
+      style={{
+        background: 'var(--color-cream)',
+        borderBottom: '1px solid var(--color-border)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 20,
+      }}
+    >
       <div
         className="container"
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 24px' }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '18px 24px',
+        }}
       >
         <Link to="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }} onClick={fechar}>
-          Doce Encanto
+          Doces Tentações
         </Link>
 
         <nav className={`nav-links ${menuAberto ? 'is-open' : ''}`}>
           <NavLink to="/" style={linkStyle} end onClick={fechar}>Início</NavLink>
           <NavLink to="/catalogo" style={linkStyle} onClick={fechar}>Catálogo</NavLink>
-          <NavLink to="/sobre" style={linkStyle} end>Sobre</NavLink>
-          <NavLink to="/perfil" style={linkStyle} end>Perfil</NavLink>
-          <NavLink to="#" style={linkStyle2}><nav><input type='text' style={inputStyle} placeholder='Pesquisar'/></nav><select style={selectStyle}>
-            <option>Filtrar</option>
-            <option>Produtos</option>
-            <option>Cursos</option>
-            <option>Vagas</option>
-          </select>
-          </NavLink>
+          <NavLink to="/contactos" style={linkStyle} onClick={fechar}>Contactos</NavLink>
+          <NavLink to="/sobre" style={linkStyle} onClick={fechar}>Sobre</NavLink>
+          <NavLink to="/perfil" style={linkStyle} onClick={fechar}>Perfil</NavLink>
           {isAdmin && <NavLink to="/admin" style={linkStyle} onClick={fechar}>Painel Admin</NavLink>}
+
+          <div style={searchWrapStyle}>
+            <input type="text" style={inputStyle} placeholder="Pesquisar" />
+            <select style={selectStyle}>
+              <option>Filtrar</option>
+              <option>Produtos</option>
+              <option>Cursos</option>
+              <option>Vagas</option>
+            </select>
+          </div>
 
           {/* No mobile, o carrinho e a conta também aparecem dentro da gaveta */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }} className="nav-drawer-extra">
@@ -77,7 +118,6 @@ export default function Header() {
           {menuAberto ? '✕' : '☰'}
         </button>
       </div>
-
       <div
         className={`nav-drawer-backdrop ${menuAberto ? 'is-open' : ''}`}
         onClick={fechar}

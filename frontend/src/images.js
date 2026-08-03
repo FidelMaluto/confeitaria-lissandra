@@ -24,4 +24,4 @@ setInterval(() => {
 
 }, 5000);
 
-export default imagens;
+// export default imagens;
