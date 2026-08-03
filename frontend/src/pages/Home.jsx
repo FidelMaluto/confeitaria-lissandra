@@ -23,8 +23,7 @@ export default function Home() {
             gridTemplateColumns: '1.1fr 0.9fr',
             gap: 40,
             alignItems: 'center',
-          }}
-        >
+          }}>
           <div>
             <span className="eyebrow">Confeitaria da Lissandra</span>
             <h1 style={{ fontSize: '3rem', lineHeight: 1.1, margin: '12px 0 20px' }}>
@@ -51,7 +50,7 @@ export default function Home() {
               boxShadow: 'var(--shadow-soft)',
             }}
             aria-hidden="true">
-            <img src="../images/IMG-20260802-WA0007.jpg" alt="" />
+            {/* <img id='slide' src="../images/IMG-20260802-WA0007.jpg" alt="" /> */}
           </div>
         </div>
       </section>

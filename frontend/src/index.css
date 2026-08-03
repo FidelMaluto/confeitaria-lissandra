@@ -1,25 +1,17 @@
-/* 
+/* ============================================================
    TOKENS — Doce Encanto (confeitaria)
    Paleta: rosa claro, leite, rosa bebê + toque de dourado
    Tipografia: Fraunces (display) + Nunito (corpo)
-    */
+   ============================================================ */
 :root {
   --color-cream: #fff8f4;
-  /* fundo principal, tom "leite" */
   --color-blush: #fbeaea;
-  /* fundo secundário, rosa muito claro */
   --color-baby-pink: #f6c9d2;
-  /* cartões, destaques suaves */
   --color-rose: #e28a9c;
-  /* cor primária (botões, links) */
   --color-rose-deep: #c25f74;
-  /* hover / ênfase */
   --color-cocoa: #4a3238;
-  /* texto principal, tom "chocolate" */
   --color-cocoa-soft: #7a5c62;
-  /* texto secundário */
   --color-gold: #cf9d4f;
-  /* detalhes, tipo "fita dourada" */
   --color-white: #ffffff;
   --color-border: #f0d7dd;
 
@@ -31,17 +23,17 @@
   --radius-lg: 28px;
 
   --shadow-soft: 0 8px 24px rgba(194, 95, 116, 0.12);
+  --shadow-hover: 0 16px 36px rgba(194, 95, 116, 0.22);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.18s;
+  --dur-med: 0.35s;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html { scroll-behavior: smooth; }
+html, body, #root { height: 100%; }
 
 body {
   margin: 0;
@@ -49,27 +41,28 @@ body {
   background: var(--color-cream);
   color: var(--color-cocoa);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--color-cocoa);
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* Tipografia fluida: escala suavemente entre mobile e desktop */
+h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
+
+a { color: inherit; text-decoration: none; }
 
 button {
   font-family: var(--font-body);
   cursor: pointer;
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
@@ -87,28 +80,84 @@ select:focus-visible {
   padding: 0 24px;
 }
 
-/* Botões */
+/* ============================================================
+   ANIMAÇÕES
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--dur-med) var(--ease-out) both;
+}
+.float {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+/* Aplica entrada suave, em cascata, aos filhos diretos de grids de produtos */
+.stagger-grid > * {
+  animation: fadeInUp var(--dur-med) var(--ease-out) both;
+}
+.stagger-grid > *:nth-child(1) { animation-delay: 0.03s; }
+.stagger-grid > *:nth-child(2) { animation-delay: 0.09s; }
+.stagger-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-grid > *:nth-child(4) { animation-delay: 0.21s; }
+.stagger-grid > *:nth-child(5) { animation-delay: 0.27s; }
+.stagger-grid > *:nth-child(6) { animation-delay: 0.33s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
+  min-height: 44px; /* alvo de toque confortável no mobile */
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
 }
+.btn:active { transform: scale(0.96); }
 
 .btn-primary {
   background: var(--color-rose);
   color: var(--color-white);
   box-shadow: var(--shadow-soft);
 }
-
 .btn-primary:hover {
   background: var(--color-rose-deep);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-secondary {
@@ -116,52 +165,80 @@ select:focus-visible {
   color: var(--color-rose-deep);
   border: 1.5px solid var(--color-rose);
 }
-
 .btn-secondary:hover {
   background: var(--color-blush);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
   background: transparent;
   color: var(--color-cocoa);
 }
+.btn-ghost:hover { background: var(--color-blush); }
 
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Botão "brilhante" opcional para CTAs de destaque (ex: hero) */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--color-rose) 0%, var(--color-rose-deep) 50%, var(--color-rose) 100%);
+  background-size: 200% 100%;
+  color: var(--color-white);
+  animation: shimmer 3.5s linear infinite;
 }
 
-/* Inputs */
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.field label {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--color-cocoa-soft);
-}
-
+/* ============================================================
+   INPUTS
+   ============================================================ */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field label { font-weight: 700; font-size: 0.85rem; color: var(--color-cocoa-soft); }
 .field input,
 .field textarea,
 .field select {
   padding: 12px 14px;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--color-border);
   font-family: var(--font-body);
   font-size: 1rem;
   background: var(--color-white);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--color-rose);
+  box-shadow: 0 0 0 4px rgba(226, 138, 156, 0.15);
 }
 
+/* ============================================================
+   CARDS
+   ============================================================ */
 .card {
   background: var(--color-white);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
+  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
+}
+
+/* Cards de produto (com link + imagem) ganham hover elegante */
+a.card-link,
+.card-hover {
+  display: block;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.card img,
+.card .card-image {
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.card:hover img,
+.card:hover .card-image {
+  transform: scale(1.06);
 }
 
 .badge {
@@ -183,44 +260,133 @@ select:focus-visible {
   color: var(--color-gold);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* ============================================================
+   TABELAS (carrinho, pedidos) — viram cartões empilhados no mobile
+   ============================================================ */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--color-border); }
+th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-cocoa-soft); }
+
+/* ============================================================
+   HEADER / NAV RESPONSIVO
+   ============================================================ */
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-blush);
+  font-size: 1.3rem;
 }
 
-th,
-td {
-  text-align: left;
-  padding: 12px 10px;
-  border-bottom: 1px solid var(--color-border);
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  transition: max-height var(--dur-med) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
 }
 
-th {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-cocoa-soft);
+.nav-drawer-backdrop { display: none; }
+
+/* No desktop, os botões de carrinho/conta aparecem só fora da gaveta */
+.nav-drawer-extra { display: none; }
+
+/* ============================================================
+   BREAKPOINTS
+   ============================================================ */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    padding-top: 48px !important;
+  }
+  .hero-grid > div:first-child { order: 2; }
+  .hero-grid > div:last-child {
+    order: 1;
+    width: min(60vw, 260px);
+    margin: 0 auto;
+  }
+  .hero-grid > div:first-child > div { justify-content: center; }
+
+  .produto-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
 }
 
-/* Home */
-img {
-  width: 50%;
+/* Celulares grandes / tablets pequenos */
+@media (max-width: 768px) {
+  .container { padding: 0 18px; }
+
+  .nav-toggle { display: inline-flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(78vw, 320px);
+    background: var(--color-cream);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 22px;
+    padding: 96px 28px 28px;
+    box-shadow: -12px 0 36px rgba(74, 50, 56, 0.18);
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 40;
+  }
+  .nav-links.is-open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* No mobile, some os botões duplicados do topo e mostra os de dentro da gaveta */
+  .header-actions-desktop { display: none; }
+  .nav-drawer-extra { display: flex; }
+
+  .nav-drawer-backdrop.is-open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(74, 50, 56, 0.35);
+    z-index: 30;
+    animation: fadeInUp 0.001s; /* apenas para reduzir motion quando aplicável */
+  }
+
+  /* Tabelas de carrinho/pedidos viram cartões empilhados */
+  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  thead { display: none; }
+  tr {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+  td {
+    border: none;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
 }
 
-/* Header */
-
-/* ProductCard */
-
-/* ProdutRoute */
-
-/* ScallopDivider */
-
-/* Footer */
-.footer {
-  padding: 5px auto;
-  background-color: #c25f74;
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .btn { width: 100%; }
+  .container { padding: 0 14px; }
+  .card { border-radius: var(--radius-sm); }
 }
 
-.footer p {
-  margin-bottom: .1px;
+/* Telas grandes: um pouco mais de respiro */
+@media (min-width: 1400px) {
+  .container { max-width: 1280px; }
 }
