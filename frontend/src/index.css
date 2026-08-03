@@ -160,6 +160,28 @@ select:focus-visible {
 .stagger-grid > *:nth-child(5) { animation-delay: 0.27s; }
 .stagger-grid > *:nth-child(6) { animation-delay: 0.33s; }
 
+/* Círculo do hero com carrossel de imagens */
+.hero-circle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-baby-pink), var(--color-rose));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  border: 6px solid var(--color-white);
+}
+.hero-circle-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .heading-underline::after { animation: drawLine 0.6s var(--ease-out) 0.15s both; transform-origin: left; }
 
 @media (prefers-reduced-motion: reduce) {
