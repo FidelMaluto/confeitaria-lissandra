@@ -8,7 +8,7 @@ export default function Home() {
   const [destaques, setDestaques] = useState([]);
 
   useEffect(() => {
-    api.listProducts().then((data) => setDestaques(data.slice(0, 3))).catch(() => {});
+    api.listProducts().then((data) => setDestaques(data.slice(0, 3))).catch(() => { });
   }, []);
 
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       {/* Hero */}
       <section style={{ background: 'linear-gradient(180deg, var(--color-blush), var(--color-cream))' }}>
         <div
-          className="container"
+          className="container hero-grid"
           style={{
             padding: '90px 24px 70px',
             display: 'grid',
@@ -24,21 +24,22 @@ export default function Home() {
             gap: 40,
             alignItems: 'center',
           }}>
-          <div>
+          <div className="fade-in-up">
             <span className="eyebrow">Confeitaria da Lissandra</span>
-            <h1 style={{ fontSize: '3rem', lineHeight: 1.1, margin: '12px 0 20px' }}>
+            <h1 style={{ lineHeight: 1.1, margin: '12px 0 20px' }}>
               Vicia-te nos<br />nossos sabores.
             </h1>
             <p style={{ fontSize: '1.05rem', color: 'var(--color-cocoa-soft)', maxWidth: 460 }}>
               Bolos, tortas e doces finos preparados do zero, todos os dias, com receita de família
               e ingredientes selecionados a dedo.
             </p>
-            <div style={{ display: 'flex', gap: 14, marginTop: 28 }}>
-              <Link to="/catalogo" className="btn btn-primary">Ver catálogo</Link>
+            <div style={{ display: 'flex', gap: 14, marginTop: 28, flexWrap: 'wrap' }}>
+              <Link to="/catalogo" className="btn btn-shine">Ver catálogo</Link>
               <Link to="/checkout" className="btn btn-secondary">Fazer encomenda</Link>
             </div>
           </div>
           <div
+            className="float"
             style={{
               aspectRatio: '1',
               borderRadius: '50%',
@@ -50,7 +51,7 @@ export default function Home() {
               boxShadow: 'var(--shadow-soft)',
             }}
             aria-hidden="true">
-            {/* <img id='slide' src="../images/IMG-20260802-WA0007.jpg" alt="" /> */}
+            {/* <img src="../images/IMG" alt="" /> */}
           </div>
         </div>
       </section>
@@ -66,7 +67,7 @@ export default function Home() {
             Cadastre produtos no painel admin para vê-los aqui.
           </p>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
+          <div className="stagger-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
             {destaques.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
