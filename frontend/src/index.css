@@ -1,33 +1,46 @@
-/* ============================================================
+/* 
    TOKENS — Doce Encanto (confeitaria)
-   Paleta: rosa claro, leite, rosa bebê + toque de dourado
-   Tipografia: Fraunces (display) + Nunito (corpo)
-   ============================================================ */
+   Identidade premium: rosa profundo + dourado sobre base neutra,
+   tipografia serifada de peso editorial. Sério, elegante, decorado.
+    */
 :root {
-  --color-cream: #fff8f4;
-  --color-blush: #fbeaea;
-  --color-baby-pink: #f6c9d2;
-  --color-rose: #e28a9c;
-  --color-rose-deep: #c25f74;
-  --color-cocoa: #4a3238;
-  --color-cocoa-soft: #7a5c62;
-  --color-gold: #cf9d4f;
+  /* Base neutra (evita a sensação "candy"; funciona como papel/porcelana) */
+  --color-cream: #faf6f2;
+  --color-porcelain: #f3ece7;
+  --color-blush: #f1e3e2;
+
+  /* Rosa como cor de marca, em tons mais profundos e contidos */
+  --color-baby-pink: #e7c9cb;
+  --color-rose: #a24a5a;
+  --color-rose-deep: #7c3547;
+  --color-rose-ink: #4a1f29;
+
+  /* Neutros de texto — marrom-carvão, não preto puro */
+  --color-cocoa: #2e2422;
+  --color-cocoa-soft: #6b5a56;
+  --color-cocoa-faint: #a89490;
+
+  /* Dourado como acabamento nobre (usar com moderação) */
+  --color-gold: #a9812f;
+  --color-gold-soft: #d8c08a;
+
   --color-white: #ffffff;
-  --color-border: #f0d7dd;
+  --color-border: #e6d9d6;
 
   --font-display: 'Fraunces', 'Georgia', serif;
   --font-body: 'Nunito', system-ui, sans-serif;
 
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 28px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
 
-  --shadow-soft: 0 8px 24px rgba(194, 95, 116, 0.12);
-  --shadow-hover: 0 16px 36px rgba(194, 95, 116, 0.22);
+  --shadow-soft: 0 6px 20px rgba(46, 36, 34, 0.08);
+  --shadow-hover: 0 18px 40px rgba(46, 36, 34, 0.16);
+  --shadow-card-inset: inset 0 0 0 1px rgba(169, 129, 47, 0.08);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 0.18s;
-  --dur-med: 0.35s;
+  --dur-med: 0.4s;
 }
 
 * { box-sizing: border-box; }
@@ -44,17 +57,46 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  color: var(--color-cocoa);
-  margin: 0 0 0.5em;
-  letter-spacing: -0.01em;
+/* Textura sutil de papel — dá um acabamento "feito à mão premium"
+   sem imagens externas, só ruído via gradientes finíssimos */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(162, 74, 90, 0.035), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(169, 129, 47, 0.04), transparent 45%);
 }
 
-/* Tipografia fluida: escala suavemente entre mobile e desktop */
-h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-rose-ink);
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.12; }
 h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
-h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
+h3 { font-size: clamp(1.05rem, 2vw, 1.25rem); }
+
+/* Sublinhado decorativo fino, tipo assinatura em papel timbrado */
+.heading-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
 
 a { color: inherit; text-decoration: none; }
 
@@ -70,7 +112,7 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -78,48 +120,47 @@ select:focus-visible {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 1;
 }
 
-/* ============================================================
-   ANIMAÇÕES
-   ============================================================ */
+/* 
+   ANIMAÇÕES — discretas, sem exagero "fofo"
+    */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
+  50%      { transform: translateY(-8px); }
 }
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes shimmer {
+@keyframes shimmerGold {
   0%   { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
-.fade-in-up {
-  animation: fadeInUp var(--dur-med) var(--ease-out) both;
-}
-.float {
-  animation: floatY 5s ease-in-out infinite;
-}
+.fade-in-up { animation: fadeInUp var(--dur-med) var(--ease-out) both; }
+.fade-in { animation: fadeIn var(--dur-med) var(--ease-out) both; }
+.float { animation: floatY 6s ease-in-out infinite; }
 
-/* Aplica entrada suave, em cascata, aos filhos diretos de grids de produtos */
-.stagger-grid > * {
-  animation: fadeInUp var(--dur-med) var(--ease-out) both;
-}
+.stagger-grid > * { animation: fadeInUp var(--dur-med) var(--ease-out) both; }
 .stagger-grid > *:nth-child(1) { animation-delay: 0.03s; }
 .stagger-grid > *:nth-child(2) { animation-delay: 0.09s; }
 .stagger-grid > *:nth-child(3) { animation-delay: 0.15s; }
 .stagger-grid > *:nth-child(4) { animation-delay: 0.21s; }
 .stagger-grid > *:nth-child(5) { animation-delay: 0.27s; }
 .stagger-grid > *:nth-child(6) { animation-delay: 0.33s; }
+
+.heading-underline::after { animation: drawLine 0.6s var(--ease-out) 0.15s both; transform-origin: left; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -130,43 +171,46 @@ select:focus-visible {
   }
 }
 
-/* ============================================================
-   BOTÕES
-   ============================================================ */
+/* 
+   BOTÕES — mais retos, mais "editorial", menos "botão de app infantil"
+    */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
-  min-height: 44px; /* alvo de toque confortável no mobile */
-  border-radius: 999px;
+  padding: 13px 28px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
   transition: transform var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out);
+              background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
-.btn:active { transform: scale(0.96); }
+.btn:active { transform: scale(0.97); }
 
 .btn-primary {
-  background: var(--color-rose);
+  background: var(--color-rose-deep);
   color: var(--color-white);
   box-shadow: var(--shadow-soft);
 }
 .btn-primary:hover {
-  background: var(--color-rose-deep);
+  background: var(--color-rose-ink);
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
 
 .btn-secondary {
-  background: var(--color-white);
+  background: transparent;
   color: var(--color-rose-deep);
-  border: 1.5px solid var(--color-rose);
+  border: 1.5px solid var(--color-rose-deep);
 }
 .btn-secondary:hover {
-  background: var(--color-blush);
+  background: var(--color-rose-deep);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
@@ -176,23 +220,30 @@ select:focus-visible {
 }
 .btn-ghost:hover { background: var(--color-blush); }
 
-.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
 
-/* Botão "brilhante" opcional para CTAs de destaque (ex: hero) */
+/* CTA de destaque com friso dourado animado — usar 1x por página, no máximo */
 .btn-shine {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, var(--color-rose) 0%, var(--color-rose-deep) 50%, var(--color-rose) 100%);
+  background: linear-gradient(90deg, var(--color-rose-deep) 0%, var(--color-rose-ink) 50%, var(--color-rose-deep) 100%);
   background-size: 200% 100%;
   color: var(--color-white);
-  animation: shimmer 3.5s linear infinite;
+  animation: shimmerGold 4s linear infinite;
+  border: 1px solid var(--color-gold-soft);
 }
 
-/* ============================================================
+/* 
    INPUTS
-   ============================================================ */
-.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.field label { font-weight: 700; font-size: 0.85rem; color: var(--color-cocoa-soft); }
+    */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.field label {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-cocoa-soft);
+}
 .field input,
 .field textarea,
 .field select {
@@ -203,34 +254,32 @@ select:focus-visible {
   font-family: var(--font-body);
   font-size: 1rem;
   background: var(--color-white);
+  color: var(--color-cocoa);
   transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
   border-color: var(--color-rose);
-  box-shadow: 0 0 0 4px rgba(226, 138, 156, 0.15);
+  box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
 }
 
-/* ============================================================
-   CARDS
-   ============================================================ */
+/* 
+   CARDS — bordas finas + friso dourado sutil no hover
+    */
 .card {
   background: var(--color-white);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
-  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
-}
-
-/* Cards de produto (com link + imagem) ganham hover elegante */
-a.card-link,
-.card-hover {
-  display: block;
+  box-shadow: var(--shadow-soft), var(--shadow-card-inset);
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              border-color var(--dur-med) var(--ease-out);
 }
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover), var(--shadow-card-inset);
+  border-color: var(--color-gold-soft);
 }
 .card img,
 .card .card-image {
@@ -238,66 +287,97 @@ a.card-link,
 }
 .card:hover img,
 .card:hover .card-image {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .badge {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 4px 13px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   background: var(--color-blush);
   color: var(--color-rose-deep);
+  border: 1px solid var(--color-baby-pink);
 }
 
 .eyebrow {
   font-family: var(--font-body);
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--color-gold);
 }
 
-/* ============================================================
-   TABELAS (carrinho, pedidos) — viram cartões empilhados no mobile
-   ============================================================ */
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--color-border); }
-th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-cocoa-soft); }
+/* 
+   DIVISOR DECORATIVO — friso duplo estilo convite/etiqueta,
+   substitui bordas genéricas entre seções
+    */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px 0 40px;
+  color: var(--color-gold);
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-soft), transparent);
+}
+.section-divider span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
 
-/* ============================================================
+/* 
+   TABELAS
+    */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 13px 10px; border-bottom: 1px solid var(--color-border); }
+th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-cocoa-soft);
+  font-weight: 800;
+}
+
+/* 
    HEADER / NAV RESPONSIVO
-   ============================================================ */
+    */
 .nav-toggle {
   display: none;
   width: 44px;
   height: 44px;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background: var(--color-blush);
-  font-size: 1.3rem;
+  color: var(--color-rose-deep);
+  font-size: 1.2rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 30px;
   align-items: center;
   transition: max-height var(--dur-med) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
 }
 
 .nav-drawer-backdrop { display: none; }
-
-/* No desktop, os botões de carrinho/conta aparecem só fora da gaveta */
 .nav-drawer-extra { display: none; }
 
-/* ============================================================
+/* 
    BREAKPOINTS
-   ============================================================ */
-
-/* Tablets */
+    */
 @media (max-width: 900px) {
   .container { padding: 0 20px; }
   .hero-grid {
@@ -319,7 +399,6 @@ th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color
   }
 }
 
-/* Celulares grandes / tablets pequenos */
 @media (max-width: 768px) {
   .container { padding: 0 18px; }
 
@@ -337,17 +416,14 @@ th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color
     justify-content: flex-start;
     gap: 22px;
     padding: 96px 28px 28px;
-    box-shadow: -12px 0 36px rgba(74, 50, 56, 0.18);
+    box-shadow: -14px 0 40px rgba(46, 36, 34, 0.2);
     transform: translateX(100%);
     opacity: 0;
     z-index: 40;
+    border-left: 1px solid var(--color-gold-soft);
   }
-  .nav-links.is-open {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  .nav-links.is-open { transform: translateX(0); opacity: 1; }
 
-  /* No mobile, some os botões duplicados do topo e mostra os de dentro da gaveta */
   .header-actions-desktop { display: none; }
   .nav-drawer-extra { display: flex; }
 
@@ -355,12 +431,10 @@ th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(74, 50, 56, 0.35);
+    background: rgba(46, 36, 34, 0.4);
     z-index: 30;
-    animation: fadeInUp 0.001s; /* apenas para reduzir motion quando aplicável */
   }
 
-  /* Tabelas de carrinho/pedidos viram cartões empilhados */
   table, thead, tbody, th, td, tr { display: block; width: 100%; }
   thead { display: none; }
   tr {
@@ -370,23 +444,15 @@ th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color
     margin-bottom: 12px;
     padding: 12px;
   }
-  td {
-    border: none;
-    padding: 6px 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-  }
+  td { border: none; padding: 6px 0; display: flex; justify-content: space-between; gap: 12px; }
 }
 
-/* Celulares pequenos */
 @media (max-width: 480px) {
   .btn { width: 100%; }
   .container { padding: 0 14px; }
   .card { border-radius: var(--radius-sm); }
 }
 
-/* Telas grandes: um pouco mais de respiro */
 @media (min-width: 1400px) {
   .container { max-width: 1280px; }
 }
