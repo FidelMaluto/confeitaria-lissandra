@@ -20,50 +20,10 @@ export default function Header() {
     paddingBottom: 4,
   });
 
-  const searchWrapStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-    flexWrap: 'wrap',
-  };
-
-  const inputStyle = {
-    borderRadius: '15px',
-    padding: '8px 12px',
-    outline: 'none',
-    border: '1px solid #e0b8c1',
-    minHeight: 40,
-  };
-
-  const selectStyle = {
-    borderRadius: '8px',
-    padding: '8px',
-    outline: 'none',
-    border: '1px solid #ddd',
-    minHeight: 40,
-    background: 'white',
-  };
-
   return (
-    <header
-      style={{
-        background: 'var(--color-cream)',
-        borderBottom: '1px solid var(--color-border)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 20,
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '18px 24px',
-        }}
-      >
-        <Link to="/" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }} onClick={fechar}>
+    <header className="site-header">
+      <div className="container site-header-bar">
+        <Link to="/" className="site-logo" onClick={fechar}>
           Doces Tentações
         </Link>
 
@@ -75,18 +35,18 @@ export default function Header() {
           <NavLink to="/perfil" style={linkStyle} onClick={fechar}>Perfil</NavLink>
           {isAdmin && <NavLink to="/admin" style={linkStyle} onClick={fechar}>Painel Admin</NavLink>}
 
-          <div style={searchWrapStyle}>
-            <input type="text" style={inputStyle} placeholder="Pesquisar" />
-            <select style={selectStyle}>
-              <option>Filtrar</option>
+          <div className="nav-search">
+            <input type="text" placeholder="Pesquisar" />
+            <select defaultValue="">
+              <option value="" disabled>Filtrar</option>
               <option>Produtos</option>
               <option>Cursos</option>
               <option>Vagas</option>
             </select>
           </div>
 
-          {/* No mobile, o carrinho e a conta também aparecem dentro da gaveta */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }} className="nav-drawer-extra">
+          {/* Este bloco só aparece dentro da gaveta mobile (controlado 100% pelo CSS) */}
+          <div className="nav-drawer-extra">
             <Link to="/carrinho" className="btn btn-secondary" onClick={fechar}>
               Carrinho{count > 0 ? ` (${count})` : ''}
             </Link>
@@ -98,8 +58,9 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="header-actions-desktop" style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <Link to="/carrinho" className="btn btn-secondary" style={{ padding: '10px 18px' }}>
+        {/* Este bloco só aparece na barra do desktop (controlado 100% pelo CSS) */}
+        <div className="header-actions-desktop">
+          <Link to="/carrinho" className="btn btn-secondary">
             Carrinho{count > 0 ? ` (${count})` : ''}
           </Link>
           {user ? (
@@ -118,6 +79,7 @@ export default function Header() {
           {menuAberto ? '✕' : '☰'}
         </button>
       </div>
+
       <div
         className={`nav-drawer-backdrop ${menuAberto ? 'is-open' : ''}`}
         onClick={fechar}

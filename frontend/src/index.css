@@ -1,8 +1,8 @@
-/* 
+/* ============================================================
    TOKENS — Doce Encanto (confeitaria)
    Identidade premium: rosa profundo + dourado sobre base neutra,
    tipografia serifada de peso editorial. Sério, elegante, decorado.
-    */
+   ============================================================ */
 :root {
   /* Base neutra (evita a sensação "candy"; funciona como papel/porcelana) */
   --color-cream: #faf6f2;
@@ -124,9 +124,9 @@ select:focus-visible {
   z-index: 1;
 }
 
-/* 
+/* ============================================================
    ANIMAÇÕES — discretas, sem exagero "fofo"
-    */
+   ============================================================ */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -171,9 +171,9 @@ select:focus-visible {
   }
 }
 
-/* 
+/* ============================================================
    BOTÕES — mais retos, mais "editorial", menos "botão de app infantil"
-    */
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -233,9 +233,9 @@ select:focus-visible {
   border: 1px solid var(--color-gold-soft);
 }
 
-/* 
+/* ============================================================
    INPUTS
-    */
+   ============================================================ */
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
 .field label {
   font-weight: 700;
@@ -264,9 +264,9 @@ select:focus-visible {
   box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
 }
 
-/* 
+/* ============================================================
    CARDS — bordas finas + friso dourado sutil no hover
-    */
+   ============================================================ */
 .card {
   background: var(--color-white);
   border-radius: var(--radius-md);
@@ -312,10 +312,10 @@ select:focus-visible {
   color: var(--color-gold);
 }
 
-/* 
+/* ============================================================
    DIVISOR DECORATIVO — friso duplo estilo convite/etiqueta,
    substitui bordas genéricas entre seções
-    */
+   ============================================================ */
 .section-divider {
   display: flex;
   align-items: center;
@@ -337,9 +337,9 @@ select:focus-visible {
   font-size: 1.1rem;
 }
 
-/* 
+/* ============================================================
    TABELAS
-    */
+   ============================================================ */
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 13px 10px; border-bottom: 1px solid var(--color-border); }
 th {
@@ -350,9 +350,31 @@ th {
   font-weight: 800;
 }
 
-/* 
+/* ============================================================
    HEADER / NAV RESPONSIVO
-    */
+   ============================================================ */
+.site-header {
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px;
+}
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-rose-ink);
+  white-space: nowrap;
+}
+
 .nav-toggle {
   display: none;
   width: 44px;
@@ -363,21 +385,67 @@ th {
   background: var(--color-blush);
   color: var(--color-rose-deep);
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 22px;
   align-items: center;
-  transition: max-height var(--dur-med) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+  flex: 1;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.nav-search input {
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  min-height: 40px;
+  border: 1.5px solid var(--color-border);
+  font-family: var(--font-body);
+  width: 160px;
+  max-width: 40vw;
+}
+.nav-search input:focus {
+  outline: none;
+  border-color: var(--color-rose);
+  box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
+}
+.nav-search select {
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  min-height: 40px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  font-family: var(--font-body);
+}
+
+/* Ações de carrinho/conta: por padrão (desktop) mostra só a barra fixa;
+   o bloco duplicado da gaveta fica sempre oculto até a media query mobile */
+.header-actions-desktop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.nav-drawer-extra {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+  width: 100%;
 }
 
 .nav-drawer-backdrop { display: none; }
-.nav-drawer-extra { display: none; }
 
-/* 
+/* ============================================================
    BREAKPOINTS
-    */
+   ============================================================ */
 @media (max-width: 900px) {
   .container { padding: 0 20px; }
   .hero-grid {
