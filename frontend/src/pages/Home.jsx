@@ -10,6 +10,7 @@ const heroImageModules = import.meta.glob('../images/*.{png,jpg,jpeg,webp}', {
   eager: true,
   import: 'default',
 });
+
 const heroImages = Object.values(heroImageModules);
 
 export default function Home() {
@@ -41,22 +42,26 @@ export default function Home() {
             gridTemplateColumns: '1.1fr 0.9fr',
             gap: 40,
             alignItems: 'center',
-          }}
-        >
+          }}>
+
           <div className="fade-in-up">
             <span className="eyebrow">Confeitaria artesanal</span>
             <h1 style={{ lineHeight: 1.1, margin: '12px 0 20px' }}>
               Doces que parecem<br />feitos de carinho.
             </h1>
+
             <p style={{ fontSize: '1.05rem', color: 'var(--color-cocoa-soft)', maxWidth: 460 }}>
               Bolos, tortas e doces finos preparados do zero, todos os dias, com receita de família
               e ingredientes selecionados a dedo.
             </p>
+
             <div style={{ display: 'flex', gap: 14, marginTop: 28, flexWrap: 'wrap' }}>
               <Link to="/catalogo" className="btn btn-shine">Ver catálogo</Link>
               <Link to="/checkout" className="btn btn-secondary">Fazer encomenda</Link>
             </div>
+
           </div>
+
           <div className="float hero-circle" aria-hidden="true">
             {heroImages.length > 0 ? (
               <img
@@ -68,8 +73,11 @@ export default function Home() {
             ) : (
               <span style={{ fontSize: '6rem' }}>🎂</span>
             )}
+
           </div>
+
         </div>
+
       </section>
 
       <ScallopDivider />
@@ -83,7 +91,10 @@ export default function Home() {
             Cadastre produtos no painel admin para vê-los aqui.
           </p>
         ) : (
-          <div className="stagger-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
+          <div className="stagger-grid" style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+            gap: 24 }}>
             {destaques.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

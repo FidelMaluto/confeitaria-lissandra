@@ -1,8 +1,8 @@
-/* ============================================================
+/* 
    TOKENS — Doce Encanto (confeitaria)
    Identidade premium: rosa profundo + dourado sobre base neutra,
    tipografia serifada de peso editorial. Sério, elegante, decorado.
-   ============================================================ */
+    */
 :root {
   /* Base neutra (evita a sensação "candy"; funciona como papel/porcelana) */
   --color-cream: #faf6f2;
@@ -124,9 +124,9 @@ select:focus-visible {
   z-index: 1;
 }
 
-/* ============================================================
+/* 
    ANIMAÇÕES — discretas, sem exagero "fofo"
-   ============================================================ */
+    */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -193,9 +193,9 @@ select:focus-visible {
   }
 }
 
-/* ============================================================
+/* 
    BOTÕES — mais retos, mais "editorial", menos "botão de app infantil"
-   ============================================================ */
+    */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -255,9 +255,9 @@ select:focus-visible {
   border: 1px solid var(--color-gold-soft);
 }
 
-/* ============================================================
+/* 
    INPUTS
-   ============================================================ */
+    */
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
 .field label {
   font-weight: 700;
@@ -286,9 +286,9 @@ select:focus-visible {
   box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
 }
 
-/* ============================================================
+/* 
    CARDS — bordas finas + friso dourado sutil no hover
-   ============================================================ */
+    */
 .card {
   background: var(--color-white);
   border-radius: var(--radius-md);
@@ -334,10 +334,10 @@ select:focus-visible {
   color: var(--color-gold);
 }
 
-/* ============================================================
+/* 
    DIVISOR DECORATIVO — friso duplo estilo convite/etiqueta,
    substitui bordas genéricas entre seções
-   ============================================================ */
+    */
 .section-divider {
   display: flex;
   align-items: center;
@@ -359,9 +359,9 @@ select:focus-visible {
   font-size: 1.1rem;
 }
 
-/* ============================================================
+/* 
    TABELAS
-   ============================================================ */
+    */
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 13px 10px; border-bottom: 1px solid var(--color-border); }
 th {
@@ -372,9 +372,9 @@ th {
   font-weight: 800;
 }
 
-/* ============================================================
+/* 
    HEADER / NAV RESPONSIVO
-   ============================================================ */
+    */
 .site-header {
   background: var(--color-cream);
   border-bottom: 1px solid var(--color-border);
@@ -465,9 +465,9 @@ th {
 
 .nav-drawer-backdrop { display: none; }
 
-/* ============================================================
+/* 
    BREAKPOINTS
-   ============================================================ */
+    */
 @media (max-width: 900px) {
   .container { padding: 0 20px; }
   .hero-grid {
