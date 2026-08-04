@@ -740,5 +740,17 @@ export default function Catalogo() {
         </section>
       </div>
     </>
+      {loading ? (
+        <p>Carregando produtos...</p>
+      ) : produtos.length === 0 ? (
+        <p style={{ color: 'var(--color-cocoa-soft)' }}>Nenhum produto encontrado nesta categoria.</p>
+      ) : (
+        <div className="stagger-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
+          {produtos.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
