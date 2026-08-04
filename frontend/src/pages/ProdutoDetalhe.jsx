@@ -29,6 +29,7 @@ export default function ProdutoDetalhe() {
   if (!produto) return <p className="container" style={{ padding: 60, textAlign: 'center' }}>Carregando produto...</p>;
 
   return (
+
     <>
       <style>{`
         .product-detail-container {
@@ -38,6 +39,24 @@ export default function ProdutoDetalhe() {
           gap: 48px;
           align-items: start;
         }
+
+    <div className="container produto-grid fade-in-up" style={{ padding: '48px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+      <div
+        style={{
+          aspectRatio: '1',
+          borderRadius: 'var(--radius-lg)',
+          background: produto.image_url
+            ? `url(${produto.image_url}) center/cover`
+            : 'linear-gradient(135deg, var(--color-baby-pink), var(--color-blush))',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '5rem',
+        }}
+      >
+        {!produto.image_url && '🍰'}
+      </div>
+
 
         .product-detail-image-wrapper {
           width: 100%;
