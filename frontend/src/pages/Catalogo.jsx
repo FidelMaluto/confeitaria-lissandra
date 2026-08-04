@@ -34,8 +34,7 @@ export default function Catalogo() {
             background: categoriaAtiva === null ? 'var(--color-rose)' : 'var(--color-white)',
             color: categoriaAtiva === null ? 'var(--color-white)' : 'var(--color-cocoa)',
             border: '1.5px solid var(--color-rose)',
-          }}
-        >
+          }}>
           Todos
         </button>
         {categorias.map((c) => (
@@ -47,8 +46,7 @@ export default function Catalogo() {
               background: categoriaAtiva === c.slug ? 'var(--color-rose)' : 'var(--color-white)',
               color: categoriaAtiva === c.slug ? 'var(--color-white)' : 'var(--color-cocoa)',
               border: '1.5px solid var(--color-rose)',
-            }}
-          >
+            }}>
             {c.name}
           </button>
         ))}
@@ -59,7 +57,9 @@ export default function Catalogo() {
       ) : produtos.length === 0 ? (
         <p style={{ color: 'var(--color-cocoa-soft)' }}>Nenhum produto encontrado nesta categoria.</p>
       ) : (
-        <div className="stagger-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
+        <div className="stagger-grid" style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
           {produtos.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
