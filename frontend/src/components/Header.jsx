@@ -1,14 +1,24 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 export default function Header() {
-
   const { user, isAdmin, signOut } = useAuth();
   const { count } = useCart();
 
   const [menuAberto, setMenuAberto] = useState(false);
+
+  useEffect(() => {
+    if (menuAberto) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [menuAberto]);
 
   const linkStyle = ({ isActive }) => ({
     fontWeight: 700,

@@ -51,7 +51,7 @@ export default function Checkout() {
           entrar em contato pelo telefone informado.
         </p>
         <p style={{ margin: '20px 0', fontWeight: 700 }}>
-          Total: R$ {Number(pedidoConfirmado.total).toFixed(2)}
+          Total: KZ$ {Number(pedidoConfirmado.total).toFixed(2)}
         </p>
         <Link to="/catalogo" className="btn btn-primary">Voltar ao catálogo</Link>
       </div>
@@ -90,10 +90,10 @@ export default function Checkout() {
         <div className="field">
           <label htmlFor="payment_method">Forma de pagamento</label>
           <select id="payment_method" name="payment_method" value={form.payment_method} onChange={handleChange}>
-            <option value="pix">MultCaixa Express</option>
+            <option value="multicaixa">MultCaixa Express</option>
             <option value="cartao">Cartão na entrega</option>
             <option value="paypay">Paypay</option>
-            <option value="kwihi">Kwiki</option>
+            <option value="kwiki">Kwiki</option>
             <option value="dinheiro">Dinheiro na entrega</option>
           </select>
         </div>
@@ -104,8 +104,8 @@ export default function Checkout() {
 
         {erro && <p style={{ color: '#b23b3b', marginBottom: 12 }}>{erro}</p>}
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-          <strong style={{ fontSize: '1.2rem' }}>Total: R$ {total.toFixed(2)}</strong>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginTop: 8 }}>
+          <strong style={{ fontSize: '1.2rem', color: 'var(--color-rose-deep)' }}>Total: KZ$ {total.toFixed(2)}</strong>
           <button className="btn btn-primary" type="submit" disabled={enviando}>
             {enviando ? 'Enviando...' : 'Confirmar pedido'}
           </button>

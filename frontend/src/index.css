@@ -2,7 +2,7 @@
    TOKENS — Doce Encanto (confeitaria)
    Paleta: rosa claro, leite, rosa bebê + toque de dourado
    Tipografia: Fraunces (display) + Nunito (corpo)
-    */
+*/
 :root {
   --color-cream: #fff8f4;
   /* fundo principal, tom "leite" */
@@ -37,10 +37,14 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -49,6 +53,12 @@ body {
   background: var(--color-cream);
   color: var(--color-cocoa);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -59,6 +69,7 @@ h4 {
   color: var(--color-cocoa);
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
+  word-break: break-word;
 }
 
 a {
@@ -85,6 +96,13 @@ select:focus-visible {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
 }
 
 /* Botões */
@@ -97,7 +115,9 @@ select:focus-visible {
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
+  min-height: 44px;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  touch-action: manipulation;
 }
 
 .btn-primary {
@@ -126,6 +146,10 @@ select:focus-visible {
   color: var(--color-cocoa);
 }
 
+.btn-ghost:hover {
+  background: rgba(194, 95, 116, 0.08);
+}
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -138,6 +162,7 @@ select:focus-visible {
   flex-direction: column;
   gap: 6px;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .field label {
@@ -149,6 +174,7 @@ select:focus-visible {
 .field input,
 .field textarea,
 .field select {
+  width: 100%;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--color-border);
@@ -183,6 +209,12 @@ select:focus-visible {
   color: var(--color-gold);
 }
 
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -202,20 +234,13 @@ th {
   color: var(--color-cocoa-soft);
 }
 
-/* Header */
-
-/* ProductCard */
-
-/* ProdutRoute */
-
-/* ScallopDivider */
-
 /* Footer */
 .footer {
-  padding: 5px auto;
-  background-color: #c25f74;
+  width: 100%;
+  background-color: var(--color-baby-pink);
 }
 
 .footer p {
-  margin-bottom: .1px;
+  margin-bottom: 0.5rem;
 }
+

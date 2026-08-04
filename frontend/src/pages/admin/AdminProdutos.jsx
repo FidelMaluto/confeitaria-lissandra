@@ -95,7 +95,7 @@ export default function AdminProdutos() {
     <div className="container" style={{ padding: '48px 24px' }}>
       <h1>Produtos</h1>
 
-      <form onSubmit={handleSubmit} className="card" style={{ padding: 24, margin: '24px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 20px' }}>
+      <form onSubmit={handleSubmit} className="card" style={{ padding: 24, margin: '24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px 20px' }}>
         <div className="field">
           <label>Nome</label>
           <input name="name" required value={form.name} onChange={handleChange} />
@@ -109,7 +109,7 @@ export default function AdminProdutos() {
           <textarea name="description" rows={2} value={form.description} onChange={handleChange} />
         </div>
         <div className="field">
-          <label>Preço (R$)</label>
+          <label>Preço (KZ$)</label>
           <input name="price" type="number" min="0" step="0.01" required value={form.price} onChange={handleChange} />
         </div>
         <div className="field">
@@ -148,33 +148,35 @@ export default function AdminProdutos() {
         </div>
       </form>
 
-      <table className="card" style={{ padding: 8 }}>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Preço</th>
-            <th>Estoque</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {produtos.map((p) => (
-            <tr key={p.id}>
-              <td>{p.name}</td>
-              <td>{p.categories?.name || '—'}</td>
-              <td>R$ {Number(p.price).toFixed(2)}</td>
-              <td>{p.stock}</td>
-              <td><span className="badge">{p.active ? 'Ativo' : 'Inativo'}</span></td>
-              <td style={{ display: 'flex', gap: 8 }}>
-                <button className="btn btn-ghost" onClick={() => editar(p)}>Editar</button>
-                <button className="btn btn-ghost" onClick={() => excluir(p.id)}>Excluir</button>
-              </td>
+      <div className="table-responsive card">
+        <table style={{ padding: 8 }}>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+              <th>Status</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {produtos.map((p) => (
+              <tr key={p.id}>
+                <td>{p.name}</td>
+                <td>{p.categories?.name || '—'}</td>
+                <td>KZ$ {Number(p.price).toFixed(2)}</td>
+                <td>{p.stock}</td>
+                <td><span className="badge">{p.active ? 'Ativo' : 'Inativo'}</span></td>
+                <td style={{ display: 'flex', gap: 8 }}>
+                  <button className="btn btn-ghost" onClick={() => editar(p)}>Editar</button>
+                  <button className="btn btn-ghost" onClick={() => excluir(p.id)}>Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
