@@ -66,7 +66,7 @@ export default function AdminPedidos() {
 
               <ul style={{ margin: '12px 0' }}>
                 {p.order_items.map((item) => (
-                  <li key={item.id}>{item.quantity}x {item.product_name} — R$ {Number(item.subtotal).toFixed(2)}</li>
+                  <li key={item.id}>{item.quantity}x {item.product_name} — KZ$ {Number(item.subtotal).toFixed(2)}</li>
                 ))}
               </ul>
 

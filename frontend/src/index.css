@@ -1,5 +1,8 @@
 /* 
    TOKENS — Doce Encanto (confeitaria)
+   Paleta: rosa claro, leite, rosa bebê + toque de dourado
+   Tipografia: Fraunces (display) + Nunito (corpo)
+*/
    Identidade premium: rosa profundo + dourado sobre base neutra,
    tipografia serifada de peso editorial. Sério, elegante, decorado.
     */
@@ -43,6 +46,15 @@
   --dur-med: 0.4s;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -57,6 +69,9 @@ body {
   overflow-x: hidden;
 }
 
+img, video, svg {
+  max-width: 100%;
+  height: auto;
 /* Textura sutil de papel — dá um acabamento "feito à mão premium"
    sem imagens externas, só ruído via gradientes finíssimos */
 body::before {
@@ -75,6 +90,7 @@ h1, h2, h3, h4 {
   color: var(--color-rose-ink);
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
+  word-break: break-word;
   font-weight: 600;
 }
 
@@ -120,6 +136,12 @@ select:focus-visible {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
   position: relative;
   z-index: 1;
 }
@@ -205,6 +227,10 @@ select:focus-visible {
   min-height: 44px;
   border-radius: var(--radius-sm);
   font-weight: 700;
+  font-size: 0.95rem;
+  min-height: 44px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  touch-action: manipulation;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   transition: transform var(--dur-fast) var(--ease-out),
@@ -242,6 +268,23 @@ select:focus-visible {
 }
 .btn-ghost:hover { background: var(--color-blush); }
 
+.btn-ghost:hover {
+  background: rgba(194, 95, 116, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Inputs */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  width: 100%;
 .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* CTA de destaque com friso dourado animado — usar 1x por página, no máximo */
@@ -269,6 +312,7 @@ select:focus-visible {
 .field input,
 .field textarea,
 .field select {
+  width: 100%;
   padding: 12px 14px;
   min-height: 44px;
   border-radius: var(--radius-sm);
@@ -334,6 +378,15 @@ select:focus-visible {
   color: var(--color-gold);
 }
 
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 /* 
    DIVISOR DECORATIVO — friso duplo estilo convite/etiqueta,
    substitui bordas genéricas entre seções
@@ -410,6 +463,14 @@ th {
   flex-shrink: 0;
 }
 
+/* Footer */
+.footer {
+  width: 100%;
+  background-color: var(--color-baby-pink);
+}
+
+.footer p {
+  margin-bottom: 0.5rem;
 .nav-links {
   display: flex;
   flex-wrap: wrap;
@@ -546,3 +607,4 @@ th {
 @media (min-width: 1400px) {
   .container { max-width: 1280px; }
 }
+
