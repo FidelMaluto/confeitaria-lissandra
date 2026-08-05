@@ -728,22 +728,22 @@ export default function Perfil() {
 
 
               <p>
-                📍 {empresa.endereco}
+                {empresa.endereco}
               </p>
 
 
               <p>
-                ☎ {empresa.telefone}
+                {empresa.telefone}
               </p>
 
 
               <p>
-                ✉ {empresa.email}
+                {empresa.email}
               </p>
 
 
               <p>
-                🕐 {empresa.horario}
+                {empresa.horario}
               </p>
 
 
@@ -1059,7 +1059,7 @@ export default function Perfil() {
 
           )
         }
-        
+
       </div>
 
     </>

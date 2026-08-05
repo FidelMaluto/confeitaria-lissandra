@@ -668,7 +668,7 @@ export default function Contactos() {
                 rel="noreferrer"
                 className="whatsapp-button"
               >
-                💬 Falar pelo WhatsApp
+                Falar pelo WhatsApp
               </a>
 
               <div className="social-section">
