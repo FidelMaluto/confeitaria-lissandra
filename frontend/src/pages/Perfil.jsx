@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../images/image copy.png";
 
 export default function Perfil() {
 
@@ -6,21 +7,19 @@ export default function Perfil() {
   const [mostrarEditar, setMostrarEditar] = useState(false);
 
   const [empresa, setEmpresa] = useState({
-    nome: "Confeitaria da Lisandra",
-    username: "@confeitariadalisandra",
+    nome: "Confeitaria Lisandra",
+    username: "@confeitaria-lisandra",
     categoria: "Confeitaria e Doces Artesanais",
-    seguidores: "2,4 mil",
-    avaliacao: "4.9",
-    email: "contacto@confeitariadalisandra.com",
-    telefone: "+244 900 000 000",
-    endereco: "Luanda, Angola",
-    horario: "Segunda - Sábado | 08:00 - 18:00",
+    seguidores: null,
+    avaliacao: null,
+    email: "lissandradocestentacoes@hotmail.com",
+    telefone: "+244 935 956 349",
+    endereco: "Zango 0, Icolo e Bengo, Angola",
+    horario: `Terça - Sexta: 12:00 - 19:00, Sábado: 12:00 - 20:00`,
     biografia:
       "Transformamos momentos especiais em memórias doces. Bolos personalizados, sobremesas e doces artesanais feitos com carinho.",
-    foto:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80",
-    capa:
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80"
+    foto: logo,
+    capa:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80"
   });
 
   const [publicacoes, setPublicacoes] = useState([
@@ -609,9 +608,6 @@ export default function Perfil() {
           }}
         >
 
-          <button>
-            📷 Alterar capa
-          </button>
 
         </section>
 
@@ -672,12 +668,6 @@ export default function Perfil() {
                 ✏ Editar perfil
               </button>
 
-
-              <button>
-                ⋯
-              </button>
-
-
             </div>
 
 
@@ -724,38 +714,6 @@ export default function Perfil() {
 
 
         </section>
-
-
-
-
-
-        <div className="menu-perfil">
-
-          <button className="selecionado">
-            Publicações
-          </button>
-
-          <button>
-            Sobre
-          </button>
-
-          <button>
-            Produtos
-          </button>
-
-          <button>
-            Fotos
-          </button>
-
-          <button>
-            Avaliações
-          </button>
-
-        </div>
-
-
-
-
 
         <main className="conteudo">
 
@@ -805,51 +763,47 @@ export default function Perfil() {
               mostrarPublicacao && (
 
                 <form
-                  className="criar-post"
-                  onSubmit={publicar}
-                >
+  className="criar-post"
+  onSubmit={publicar}
+>
+  <textarea
+    placeholder="Partilhe uma novidade..."
+    value={novaPublicacao.texto}
+    onChange={(e) =>
+      setNovaPublicacao({
+        ...novaPublicacao,
+        texto: e.target.value
+      })
+    }
+  />
 
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) =>
+      setNovaPublicacao({
+        ...novaPublicacao,
+        imagem: e.target.files[0]
+      })
+    }
+  />
 
-                  <textarea
+  {novaPublicacao.imagem && (
+    <img
+      src={URL.createObjectURL(novaPublicacao.imagem)}
+      alt="Preview"
+      style={{
+        width: '200px',
+        borderRadius: '10px',
+        marginTop: '10px'
+      }}
+    />
+  )}
 
-                    placeholder="Partilhe uma novidade..."
-
-                    value={novaPublicacao.texto}
-
-                    onChange={(e)=>
-                      setNovaPublicacao({
-                        ...novaPublicacao,
-                        texto:e.target.value
-                      })
-                    }
-
-                  />
-
-
-
-                  <input
-
-                    placeholder="URL da imagem"
-
-                    value={novaPublicacao.imagem}
-
-                    onChange={(e)=>
-                      setNovaPublicacao({
-                        ...novaPublicacao,
-                        imagem:e.target.value
-                      })
-                    }
-
-                  />
-
-
-
-                  <button>
-                    Publicar
-                  </button>
-
-
-                </form>
+  <button>
+    Publicar
+  </button>
+</form>
 
               )
             }

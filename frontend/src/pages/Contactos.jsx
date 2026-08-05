@@ -42,6 +42,9 @@ export default function Contactos() {
   };
 
   return (
+
+    
+
     <>
       <style>{`
 
@@ -589,11 +592,7 @@ export default function Contactos() {
                     </h3>
 
                     <p>
-                      +244 9XX XXX XXX
-                    </p>
-
-                    <p>
-                      +244 9XX XXX XXX
+                      +244 935 956 349
                     </p>
                   </div>
 
@@ -611,7 +610,7 @@ export default function Contactos() {
                     </h3>
 
                     <p>
-                      contacto@docestentacoes.ao
+                      lissandradocestentacoes@hotmail.com
                     </p>
                   </div>
 
@@ -629,7 +628,7 @@ export default function Contactos() {
                     </h3>
 
                     <p>
-                      Luanda, Angola
+                     Zango 0, Icolo e Bengo, Angola
                     </p>
 
                     <p>
@@ -651,11 +650,11 @@ export default function Contactos() {
                     </h3>
 
                     <p>
-                      Segunda a Sexta: 08:00 — 18:00
+                      Terça - Sexta: 12:00 - 19:00,
                     </p>
 
                     <p>
-                      Sábado: 08:00 — 15:00
+                      Sábado: 12:00 - 20:00
                     </p>
                   </div>
 
@@ -664,7 +663,7 @@ export default function Contactos() {
               </div>
 
               <a
-                href="https://wa.me/244900000000"
+                href="https://wa.me/244935956349"
                 target="_blank"
                 rel="noreferrer"
                 className="whatsapp-button"
@@ -680,20 +679,16 @@ export default function Contactos() {
 
                 <div className="social-links">
 
-                  <a href="#" className="social-link">
-                    f
+                  <a href="https://www.facebook.com/profile.php?id=61562974170346" className="social-link" target='_blank'>
+                    <i className="fa-brands fa-facebook"></i>
                   </a>
 
-                  <a href="#" className="social-link">
-                    ◎
+                  <a href="#" className="social-link" target='_blank'>
+                    <i className="fa-brands fa-instagram"></i>
                   </a>
 
-                  <a href="#" className="social-link">
-                    ▶
-                  </a>
-
-                  <a href="#" className="social-link">
-                    ♪
+                  <a href="https://www.tiktok.com/@lissandra_docestentacoes" className="social-link" target='_blank'>
+                    <i className="fa-brands fa-tiktok"></i>
                   </a>
 
                 </div>
@@ -907,7 +902,7 @@ export default function Contactos() {
                 </p>
 
                 <a
-                  href="https://www.google.com/maps"
+                  href="https://maps.app.goo.gl/bMdEPNDLdTLJrnuHA"
                   target="_blank"
                   rel="noreferrer"
                   className="map-button"
