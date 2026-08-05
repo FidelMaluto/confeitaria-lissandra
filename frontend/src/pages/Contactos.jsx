@@ -683,7 +683,7 @@ export default function Contactos() {
                     <i className="fa-brands fa-facebook"></i>
                   </a>
 
-                  <a href="#" className="social-link" target='_blank'>
+                  <a href="https://www.instagram.com/lissandra_docestentacoes/" className="social-link" target='_blank'>
                     <i className="fa-brands fa-instagram"></i>
                   </a>
 
