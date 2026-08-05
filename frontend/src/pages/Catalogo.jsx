@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useState } from 'react';
 import logo from '../images/logo.png';
 
 const produtos = [
