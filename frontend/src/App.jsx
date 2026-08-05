@@ -6,6 +6,9 @@ import { RequireAuth, RequireAdmin } from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 import Contatos from './pages/Contatos';
+import Sobre from './pages/Sobre';
+import Perfil from './pages/Perfil';
+
 import ProdutoDetalhe from './pages/ProdutoDetalhe';
 import Carrinho from './pages/Carrinho';
 import Checkout from './pages/Checkout';
@@ -16,8 +19,6 @@ import MeusPedidos from './pages/MeusPedidos';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProdutos from './pages/admin/AdminProdutos';
 import AdminPedidos from './pages/admin/AdminPedidos';
-import Sobre from './pages/Sobre';
-
 export default function App() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/contatos" element={<Contatos />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="/produto/:slug" element={<ProdutoDetalhe />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/checkout" element={<Checkout />} />
