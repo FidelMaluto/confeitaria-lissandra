@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import logo from '../images/logo.png';
 
 const produtos = [
   {
@@ -547,11 +548,11 @@ export default function Catalogo() {
               </p>
             </div>
 
-            <img
-              className="hero-image"
-              src='.././images/logo.png'
-              alt="Bolo de chocolate"
-            />
+                  <img
+                    className="hero-image"
+                    src={logo}
+                    alt="Logo"
+                  />
 
           </div>
 

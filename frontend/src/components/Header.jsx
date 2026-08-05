@@ -1,7 +1,8 @@
+
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { useState } from 'react';
 
 export default function Header() {
 
@@ -10,19 +11,21 @@ export default function Header() {
 
   const [menuAberto, setMenuAberto] = useState(false);
 
+  const fechar = () => {
+    setMenuAberto(false);
+  };
+
   const linkStyle = ({ isActive }) => ({
     fontWeight: 700,
     fontSize: '0.95rem',
-    color: isActive ? 'var(--color-rose-deep)' : 'var(--color-cocoa)',
+    color: isActive
+      ? 'var(--color-rose-deep)'
+      : 'var(--color-cocoa)',
     borderBottom: isActive
       ? '2px solid var(--color-rose)'
       : '2px solid transparent',
     paddingBottom: 4,
   });
-
-  const fecharMenu = () => {
-    setMenuAberto(false);
-  };
 
   return (
     <>
@@ -48,6 +51,8 @@ export default function Header() {
           font-size:1.5rem;
           font-weight:700;
           white-space:nowrap;
+          text-decoration:none;
+          color:var(--color-cocoa);
         }
 
         .header-nav{
@@ -60,6 +65,26 @@ export default function Header() {
           display:flex;
           align-items:center;
           gap:14px;
+        }
+
+        .nav-search{
+          display:flex;
+          align-items:center;
+          gap:10px;
+        }
+
+        .nav-search input{
+          padding:8px 12px;
+          border:1px solid var(--color-border);
+          border-radius:8px;
+          outline:none;
+        }
+
+        .nav-search select{
+          padding:8px 12px;
+          border:1px solid var(--color-border);
+          border-radius:8px;
+          outline:none;
         }
 
         .menu-button{
@@ -151,37 +176,88 @@ export default function Header() {
 
         <div className="header-container">
 
-          <Link to="/" className="header-logo">
+          <Link
+            to="/"
+            className="header-logo"
+            onClick={fechar}
+          >
             Doces Tentações
           </Link>
 
           <nav className="header-nav">
 
-            <NavLink to="/" style={linkStyle} end>
+          <NavLink
+              to="/"
+              style={linkStyle}
+              end
+            >
               Início
             </NavLink>
 
-            <NavLink to="/catalogo" style={linkStyle}>
+            <NavLink
+              to="/catalogo"
+              style={linkStyle}
+            >
               Catálogo
             </NavLink>
 
-            <NavLink to="/contactos" style={linkStyle}>
-              Contactos
-            </NavLink>
+            <NavLink
+  to="/contactos"
+  style={linkStyle}
+>
+  Contactos
+</NavLink>
 
-            <NavLink to="/sobre" style={linkStyle}>
+          <NavLink
+            to="/sobre"
+              style={linkStyle}
+            >
               Sobre
-            </NavLink>
+           </NavLink>
 
-            <NavLink to="/perfil" style={linkStyle}>
+            <NavLink
+              to="/perfil"
+              style={linkStyle}
+            >
               Perfil
             </NavLink>
 
             {isAdmin && (
-              <NavLink to="/admin" style={linkStyle}>
+              <NavLink
+                to="/admin"
+                style={linkStyle}
+              >
                 Painel Admin
               </NavLink>
             )}
+
+            <div className="nav-search">
+
+              <input
+                type="text"
+                placeholder="Pesquisar"
+              />
+
+              <select defaultValue="">
+                <option value="" disabled>
+                  Filtrar
+                </option>
+
+                <option>
+                  Produtos
+                </option>
+
+                <option>
+                  Cursos
+                </option>
+
+                <option>
+                  Vagas
+                </option>
+
+              </select>
+
+            </div>
 
           </nav>
 
@@ -223,16 +299,18 @@ export default function Header() {
 
       </header>
 
-
       {menuAberto && (
         <div
           className="overlay"
-          onClick={fecharMenu}
+          onClick={fechar}
         />
       )}
 
-
-      <div className={`sidebar-menu ${menuAberto ? "open" : ""}`}>
+      <div
+        className={`sidebar-menu ${
+          menuAberto ? 'open' : ''
+        }`}
+      >
 
         <div className="sidebar-header">
 
@@ -242,38 +320,54 @@ export default function Header() {
 
           <button
             className="close-menu"
-            onClick={fecharMenu}
+            onClick={fechar}
           >
             ×
           </button>
 
         </div>
 
-
         <div className="sidebar-links">
 
-          <NavLink to="/" onClick={fecharMenu}>
+          <NavLink
+            to="/"
+            onClick={fechar}
+          >
             Início
           </NavLink>
 
-          <NavLink to="/catalogo" onClick={fecharMenu}>
+          <NavLink
+            to="/catalogo"
+            onClick={fechar}
+          >
             Catálogo
           </NavLink>
 
-          <NavLink to="/contactos" onClick={fecharMenu}>
+          <NavLink
+            to="/contactos"
+            onClick={fechar}
+          >
             Contactos
           </NavLink>
-
-          <NavLink to="/sobre" onClick={fecharMenu}>
+          <NavLink
+            to="/sobre"
+            onClick={fechar}
+          >
             Sobre
           </NavLink>
 
-          <NavLink to="/perfil" onClick={fecharMenu}>
+          <NavLink
+            to="/perfil"
+            onClick={fechar}
+          >
             Perfil
           </NavLink>
 
           {isAdmin && (
-            <NavLink to="/admin" onClick={fecharMenu}>
+            <NavLink
+              to="/admin"
+              onClick={fechar}
+            >
               Painel Admin
             </NavLink>
           )}
@@ -286,29 +380,43 @@ export default function Header() {
           <Link
             to="/carrinho"
             className="btn btn-secondary"
+            onClick={fechar}
           >
             Carrinho {count > 0 && `(${count})`}
           </Link>
 
+
           {user ? (
+
             <button
               className="btn btn-ghost"
-              onClick={signOut}
+              onClick={() => {
+                signOut();
+                fechar();
+              }}
             >
               Sair
             </button>
+
           ) : (
+
             <Link
               to="/login"
               className="btn btn-primary"
+              onClick={fechar}
             >
               Entrar
             </Link>
+
           )}
 
         </div>
 
       </div>
+
     </>
   );
+
 }
+
+

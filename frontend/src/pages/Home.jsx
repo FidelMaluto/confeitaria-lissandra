@@ -5,9 +5,20 @@ import ProductCard from "../components/ProductCard";
 import ScallopDivider from "../components/ScallopDivider";
 import logo from "../images/image copy.png";
 
+// Pega automaticamente TODAS as imagens de frontend/images,
+// não importa o nome do arquivo — só precisam estar nessa pasta.
+const heroImageModules = import.meta.glob('../images/*.{png,jpg,jpeg,webp}', {
+  eager:true,
+  import:'default',
+});
+
+const heroImages = Object.values(heroImageModules)
+  .filter((img)=> img !== logo);
+
 export default function Home() {
 
   const [destaques, setDestaques] = useState([]);
+  const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
     api.listProducts()
@@ -15,6 +26,14 @@ export default function Home() {
       .catch(() => {});
   }, []);
 
+  // Troca a imagem do círculo a cada 5 segundos
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+    const intervalo = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(intervalo);
+  }, []);
 
   return (
 
@@ -390,17 +409,28 @@ export default function Home() {
 
 
 
-          <div className="hero-logo-container">
+         <div className="hero-logo-container">
 
+  {heroImages.length > 0 ? (
 
-            <img
-              alt="logo"
-              src={logo}
-              className="hero-logo"
-            />
+    <img
+      key={heroIndex}
+      alt="imagem destaque"
+      src={heroImages[heroIndex]}
+      className="hero-logo"
+    />
 
+  ) : (
 
-          </div>
+    <img
+      alt="logo"
+      src={logo}
+      className="hero-logo"
+    />
+
+  )}
+
+</div>
 
 
         </div>
