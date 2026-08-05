@@ -26,7 +26,7 @@ export default function Home() {
     if (heroImages.length <= 1) return;
     const intervalo = setInterval(() => {
       setHeroIndex((i) => (i + 1) % heroImages.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(intervalo);
   }, []);
 
@@ -71,7 +71,7 @@ export default function Home() {
                 className="hero-circle-img fade-in"
               />
             ) : (
-              <span style={{ fontSize: '6rem' }}>🎂</span>
+              <span style={{ fontSize: '6rem' }}></span>
             )}
 
           </div>

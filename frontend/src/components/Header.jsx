@@ -30,20 +30,10 @@ export default function Header() {
         <nav className={`nav-links ${menuAberto ? 'is-open' : ''}`}>
           <NavLink to="/" style={linkStyle} end onClick={fechar}>Início</NavLink>
           <NavLink to="/catalogo" style={linkStyle} onClick={fechar}>Catálogo</NavLink>
-          <NavLink to="/contactos" style={linkStyle} onClick={fechar}>Contactos</NavLink>
+          <NavLink to="/contatos" style={linkStyle} onClick={fechar}>Contatos</NavLink>
           <NavLink to="/sobre" style={linkStyle} onClick={fechar}>Sobre</NavLink>
           <NavLink to="/perfil" style={linkStyle} onClick={fechar}>Perfil</NavLink>
           {isAdmin && <NavLink to="/admin" style={linkStyle} onClick={fechar}>Painel Admin</NavLink>}
-
-          <div className="nav-search">
-            <input type="text" placeholder="Pesquisar" />
-            <select defaultValue="">
-              <option value="" disabled>Filtrar</option>
-              <option>Produtos</option>
-              <option>Cursos</option>
-              <option>Vagas</option>
-            </select>
-          </div>
 
           {/* Este bloco só aparece dentro da gaveta mobile (controlado 100% pelo CSS) */}
           <div className="nav-drawer-extra">
