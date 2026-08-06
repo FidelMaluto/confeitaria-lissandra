@@ -371,6 +371,7 @@ export default function Sobre() {
           border-radius: 15px;
           background: #fff;
           width: 45%;
+
         }
 
         .team-image {
@@ -383,6 +384,7 @@ export default function Sobre() {
         .team-image-2 {
           background-image:
             url('https://images.unsplash.com/photo-1610851467843-fe4a65aea9c0?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb');
+
         }
 
         .team-image-3 {
@@ -620,7 +622,6 @@ export default function Sobre() {
 
               </div>
 
-
               <div className="number-card">
 
                 <span className="number">
@@ -849,7 +850,6 @@ export default function Sobre() {
 
             <div className="team-grid">
 
-
               <div className="team-card">
 
                 <div className="team-image team-image-2">
@@ -918,4 +918,4 @@ export default function Sobre() {
       </div>
     </>
   );
-}
+
