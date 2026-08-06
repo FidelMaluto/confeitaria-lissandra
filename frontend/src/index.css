@@ -1,47 +1,52 @@
 /* 
    TOKENS — Doce Encanto (confeitaria)
-   Paleta: rosa claro, leite, rosa bebê + toque de dourado
-   Tipografia: Fraunces (display) + Nunito (corpo)
+   Identidade premium: rosa profundo + dourado sobre base neutra,
+   tipografia serifada de peso editorial. Sério, elegante, decorado.
     */
 :root {
-  --color-cream: #fff8f4;
-  /* fundo principal, tom "leite" */
-  --color-blush: #fbeaea;
-  /* fundo secundário, rosa muito claro */
-  --color-baby-pink: #f6c9d2;
-  /* cartões, destaques suaves */
-  --color-rose: #e28a9c;
-  /* cor primária (botões, links) */
-  --color-rose-deep: #c25f74;
-  /* hover / ênfase */
-  --color-cocoa: #4a3238;
-  /* texto principal, tom "chocolate" */
-  --color-cocoa-soft: #7a5c62;
-  /* texto secundário */
-  --color-gold: #cf9d4f;
-  /* detalhes, tipo "fita dourada" */
+  /* Base neutra (evita a sensação "candy"; funciona como papel/porcelana) */
+  --color-cream: #faf6f2;
+  --color-porcelain: #f3ece7;
+  --color-blush: #f1e3e2;
+
+  /* Rosa como cor de marca, em tons mais profundos e contidos */
+  --color-baby-pink: #e7c9cb;
+  --color-rose: #a24a5a;
+  --color-rose-deep: #7c3547;
+  --color-rose-ink: #4a1f29;
+
+  /* Neutros de texto — marrom-carvão, não preto puro */
+  --color-cocoa: #2e2422;
+  --color-cocoa-soft: #6b5a56;
+  --color-cocoa-faint: #a89490;
+
+  /* Dourado como acabamento nobre (usar com moderação) */
+  --color-gold: #a9812f;
+  --color-gold-soft: #d8c08a;
+
   --color-white: #ffffff;
-  --color-border: #f0d7dd;
+  --color-border: #e6d9d6;
 
   --font-display: 'Fraunces', 'Georgia', serif;
   --font-body: 'Nunito', system-ui, sans-serif;
 
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 28px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
 
-  --shadow-soft: 0 8px 24px rgba(194, 95, 116, 0.12);
+  --shadow-soft: 0 6px 20px rgba(46, 36, 34, 0.08);
+  --shadow-hover: 0 18px 40px rgba(46, 36, 34, 0.16);
+  --shadow-card-inset: inset 0 0 0 1px rgba(169, 129, 47, 0.08);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.18s;
+  --dur-med: 0.4s;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html { scroll-behavior: smooth; }
+html, body, #root { height: 100%; }
 
 body {
   margin: 0;
@@ -49,27 +54,57 @@ body {
   background: var(--color-cream);
   color: var(--color-cocoa);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4 {
+/* Textura sutil de papel — dá um acabamento "feito à mão premium"
+   sem imagens externas, só ruído via gradientes finíssimos */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(162, 74, 90, 0.035), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(169, 129, 47, 0.04), transparent 45%);
+}
+
+h1, h2, h3, h4 {
   font-family: var(--font-display);
-  color: var(--color-cocoa);
+  color: var(--color-rose-ink);
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
+  font-weight: 600;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.12; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+h3 { font-size: clamp(1.05rem, 2vw, 1.25rem); }
+
+/* Sublinhado decorativo fino, tipo assinatura em papel timbrado */
+.heading-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
 }
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+a { color: inherit; text-decoration: none; }
 
 button {
   font-family: var(--font-body);
   cursor: pointer;
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
@@ -77,7 +112,7 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -85,137 +120,429 @@ select:focus-visible {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Botões */
+/* 
+   ANIMAÇÕES — discretas, sem exagero "fofo"
+    */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes shimmerGold {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.fade-in-up { animation: fadeInUp var(--dur-med) var(--ease-out) both; }
+.fade-in { animation: fadeIn var(--dur-med) var(--ease-out) both; }
+.float { animation: floatY 6s ease-in-out infinite; }
+
+.stagger-grid > * { animation: fadeInUp var(--dur-med) var(--ease-out) both; }
+.stagger-grid > *:nth-child(1) { animation-delay: 0.03s; }
+.stagger-grid > *:nth-child(2) { animation-delay: 0.09s; }
+.stagger-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-grid > *:nth-child(4) { animation-delay: 0.21s; }
+.stagger-grid > *:nth-child(5) { animation-delay: 0.27s; }
+.stagger-grid > *:nth-child(6) { animation-delay: 0.33s; }
+
+/* Círculo do hero com carrossel de imagens */
+.hero-circle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-baby-pink), var(--color-rose));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  border: 6px solid var(--color-white);
+}
+.hero-circle-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.heading-underline::after { animation: drawLine 0.6s var(--ease-out) 0.15s both; transform-origin: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* 
+   BOTÕES — mais retos, mais "editorial", menos "botão de app infantil"
+    */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
-  border-radius: 999px;
+  padding: 13px 28px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
   font-weight: 700;
-  font-size: 0.95rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
+.btn:active { transform: scale(0.97); }
 
 .btn-primary {
-  background: var(--color-rose);
+  background: var(--color-rose-deep);
   color: var(--color-white);
   box-shadow: var(--shadow-soft);
 }
-
 .btn-primary:hover {
-  background: var(--color-rose-deep);
-  transform: translateY(-1px);
+  background: var(--color-rose-ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-secondary {
-  background: var(--color-white);
+  background: transparent;
   color: var(--color-rose-deep);
-  border: 1.5px solid var(--color-rose);
+  border: 1.5px solid var(--color-rose-deep);
 }
-
 .btn-secondary:hover {
-  background: var(--color-blush);
+  background: var(--color-rose-deep);
+  color: var(--color-white);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
   background: transparent;
   color: var(--color-cocoa);
 }
+.btn-ghost:hover { background: var(--color-blush); }
 
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* CTA de destaque com friso dourado animado — usar 1x por página, no máximo */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--color-rose-deep) 0%, var(--color-rose-ink) 50%, var(--color-rose-deep) 100%);
+  background-size: 200% 100%;
+  color: var(--color-white);
+  animation: shimmerGold 4s linear infinite;
+  border: 1px solid var(--color-gold-soft);
 }
 
-/* Inputs */
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
+/* 
+   INPUTS
+    */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
 .field label {
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-cocoa-soft);
 }
-
 .field input,
 .field textarea,
 .field select {
   padding: 12px 14px;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--color-border);
   font-family: var(--font-body);
   font-size: 1rem;
   background: var(--color-white);
+  color: var(--color-cocoa);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--color-rose);
+  box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
 }
 
+/* 
+   CARDS — bordas finas + friso dourado sutil no hover
+    */
 .card {
   background: var(--color-white);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-soft), var(--shadow-card-inset);
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              border-color var(--dur-med) var(--ease-out);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover), var(--shadow-card-inset);
+  border-color: var(--color-gold-soft);
+}
+.card img,
+.card .card-image {
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.card:hover img,
+.card:hover .card-image {
+  transform: scale(1.05);
 }
 
 .badge {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 4px 13px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   background: var(--color-blush);
   color: var(--color-rose-deep);
+  border: 1px solid var(--color-baby-pink);
 }
 
 .eyebrow {
   font-family: var(--font-body);
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--color-gold);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* 
+   DIVISOR DECORATIVO — friso duplo estilo convite/etiqueta,
+   substitui bordas genéricas entre seções
+    */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px 0 40px;
+  color: var(--color-gold);
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-soft), transparent);
+}
+.section-divider span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
 }
 
-th,
-td {
-  text-align: left;
-  padding: 12px 10px;
-  border-bottom: 1px solid var(--color-border);
-}
-
+/* 
+   TABELAS
+    */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 13px 10px; border-bottom: 1px solid var(--color-border); }
 th {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--color-cocoa-soft);
+  font-weight: 800;
 }
 
-/* Header */
-
-/* ProductCard */
-
-/* ProdutRoute */
-
-/* ScallopDivider */
-
-/* Footer */
-.footer {
-  padding: 5px auto;
-  background-color: #c25f74;
+/* 
+   HEADER / NAV RESPONSIVO
+    */
+.site-header {
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px;
+}
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-rose-ink);
+  white-space: nowrap;
 }
 
-.footer p {
-  margin-bottom: .1px;
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-blush);
+  color: var(--color-rose-deep);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.nav-search input {
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  min-height: 40px;
+  border: 1.5px solid var(--color-border);
+  font-family: var(--font-body);
+  width: 160px;
+  max-width: 40vw;
+}
+.nav-search input:focus {
+  outline: none;
+  border-color: var(--color-rose);
+  box-shadow: 0 0 0 4px rgba(162, 74, 90, 0.12);
+}
+.nav-search select {
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  min-height: 40px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  font-family: var(--font-body);
+}
+
+/* Ações de carrinho/conta: por padrão (desktop) mostra só a barra fixa;
+   o bloco duplicado da gaveta fica sempre oculto até a media query mobile */
+.header-actions-desktop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.nav-drawer-extra {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.nav-drawer-backdrop { display: none; }
+
+/* 
+   BREAKPOINTS
+    */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    padding-top: 48px !important;
+  }
+  .hero-grid > div:first-child { order: 2; }
+  .hero-grid > div:last-child {
+    order: 1;
+    width: min(60vw, 260px);
+    margin: 0 auto;
+  }
+  .hero-grid > div:first-child > div { justify-content: center; }
+
+  .produto-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 18px; }
+
+  .nav-toggle { display: inline-flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(78vw, 320px);
+    background: var(--color-cream);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 22px;
+    padding: 96px 28px 28px;
+    box-shadow: -14px 0 40px rgba(46, 36, 34, 0.2);
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 40;
+    border-left: 1px solid var(--color-gold-soft);
+  }
+  .nav-links.is-open { transform: translateX(0); opacity: 1; }
+
+  .header-actions-desktop { display: none; }
+  .nav-drawer-extra { display: flex; }
+
+  .nav-drawer-backdrop.is-open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(46, 36, 34, 0.4);
+    z-index: 30;
+  }
+
+  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  thead { display: none; }
+  tr {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+  td { border: none; padding: 6px 0; display: flex; justify-content: space-between; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .btn { width: 100%; }
+  .container { padding: 0 14px; }
+  .card { border-radius: var(--radius-sm); }
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: 1280px; }
 }

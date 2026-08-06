@@ -26,7 +26,7 @@ export default function ProdutoDetalhe() {
   if (!produto) return <p className="container" style={{ padding: 60 }}>Carregando...</p>;
 
   return (
-    <div className="container" style={{ padding: '48px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+    <div className="container produto-grid fade-in-up" style={{ padding: '48px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
       <div
         style={{
           aspectRatio: '1',

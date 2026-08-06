@@ -194,17 +194,14 @@ export default function Sobre() {
 
         .numbers-section {
           padding: 70px 20px;
-
           background: #f8e5e7;
         }
 
         .numbers-container {
           max-width: 1000px;
           margin: auto;
-
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
+          display: flex;
+          justify-content: space-between;
         }
 
         .number-card {
@@ -362,18 +359,19 @@ export default function Sobre() {
         }
 
         .team-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 25px;
+          display: flex;
+          // grid-template-columns: repeat(3, 1fr);
+          // gap: 25px;
+          justify-content: space-between;
         }
 
         .team-card {
-          overflow: hidden;
-
+          // overflow: hidden;
           border: 1px solid #f0e2e2;
           border-radius: 15px;
-
           background: #fff;
+          width: 45%;
+
         }
 
         .team-image {
@@ -383,19 +381,15 @@ export default function Sobre() {
           background-position: center;
         }
 
-        .team-image-1 {
-          background-image:
-            url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80');
-        }
-
         .team-image-2 {
           background-image:
-            url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80');
+            url('https://images.unsplash.com/photo-1610851467843-fe4a65aea9c0?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb');
+
         }
 
         .team-image-3 {
           background-image:
-            url('https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=700&q=80');
+            url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb');
         }
 
         .team-info {
@@ -631,18 +625,6 @@ export default function Sobre() {
               <div className="number-card">
 
                 <span className="number">
-                  500+
-                </span>
-
-                <span className="number-description">
-                  Encomendas realizadas
-                </span>
-
-              </div>
-
-              <div className="number-card">
-
-                <span className="number">
                   100%
                 </span>
 
@@ -870,25 +852,6 @@ export default function Sobre() {
 
               <div className="team-card">
 
-                <div className="team-image team-image-1">
-                </div>
-
-                <div className="team-info">
-
-                  <h3 className="team-name">
-                    Lisandra
-                  </h3>
-
-                  <p className="team-role">
-                    Fundadora & Confeiteira
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="team-card">
-
                 <div className="team-image team-image-2">
                 </div>
 
@@ -955,4 +918,4 @@ export default function Sobre() {
       </div>
     </>
   );
-}
+
