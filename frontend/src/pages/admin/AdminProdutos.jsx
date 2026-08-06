@@ -22,7 +22,7 @@ export default function AdminProdutos() {
 
   function carregar() {
     api.listAllProductsAdmin().then(setProdutos).catch((e) => setErro(e.message));
-    api.listCategories().then(setCategorias).catch(() => {});
+    api.listCategories().then(setCategorias).catch(() => { });
   }
 
   useEffect(carregar, []);
@@ -95,7 +95,13 @@ export default function AdminProdutos() {
     <div className="container" style={{ padding: '48px 24px' }}>
       <h1>Produtos</h1>
 
-      <form onSubmit={handleSubmit} className="card" style={{ padding: 24, margin: '24px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 20px' }}>
+      <form onSubmit={handleSubmit} className="card" style={{
+        padding: 24,
+        margin: '24px 0',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '0 20px'
+      }}>
         <div className="field">
           <label>Nome</label>
           <input name="name" required value={form.name} onChange={handleChange} />
@@ -109,7 +115,7 @@ export default function AdminProdutos() {
           <textarea name="description" rows={2} value={form.description} onChange={handleChange} />
         </div>
         <div className="field">
-          <label>Preço (R$)</label>
+          <label>Preço (KZ$)</label>
           <input name="price" type="number" min="0" step="0.01" required value={form.price} onChange={handleChange} />
         </div>
         <div className="field">
@@ -129,14 +135,27 @@ export default function AdminProdutos() {
           <label>URL da imagem</label>
           <input name="image_url" value={form.image_url} onChange={handleChange} placeholder="https://..." />
         </div>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, gridColumn: '1 / -1', marginBottom: 16 }}>
+        <label style={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          gap: 8, 
+          gridColumn: '1 / -1', 
+          marginBottom: 16 
+          }}>
           <input type="checkbox" name="active" checked={form.active} onChange={handleChange} />
           Produto ativo (visível na loja)
         </label>
 
-        {erro && <p style={{ color: '#b23b3b', gridColumn: '1 / -1' }}>{erro}</p>}
+        {erro && <p style={{ 
+          color: '#b23b3b', 
+          gridColumn: '1 / -1' 
+          }}>{erro}</p>}
 
-        <div style={{ gridColumn: '1 / -1', display: 'flex', gap: 12 }}>
+        <div style={{ 
+          gridColumn: '1 / -1', 
+          display: 'flex', 
+          gap: 12 
+          }}>
           <button className="btn btn-primary" type="submit">
             {editando ? 'Salvar alterações' : 'Adicionar produto'}
           </button>
@@ -164,7 +183,7 @@ export default function AdminProdutos() {
             <tr key={p.id}>
               <td>{p.name}</td>
               <td>{p.categories?.name || '—'}</td>
-              <td>R$ {Number(p.price).toFixed(2)}</td>
+              <td>KZ$ {Number(p.price).toFixed(2)}</td>
               <td>{p.stock}</td>
               <td><span className="badge">{p.active ? 'Ativo' : 'Inativo'}</span></td>
               <td style={{ display: 'flex', gap: 8 }}>

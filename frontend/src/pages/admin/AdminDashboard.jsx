@@ -6,14 +6,28 @@ export default function AdminDashboard() {
       <span className="eyebrow">Painel administrativo</span>
       <h1 style={{ marginBottom: 28 }}>Bem-vinda(o) de volta</h1>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20 }}>
-        <Link to="/admin/produtos" className="card" style={{ padding: 28, display: 'block' }}>
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
+        gap: 20 
+        }}>
+        <Link to="/admin/produtos" className="card" style={{
+          padding: 28, 
+          display: 'block' 
+          }}>
           <h3>Produtos</h3>
-          <p style={{ color: 'var(--color-cocoa-soft)' }}>Cadastre, edite e organize o cardápio.</p>
+          <p style={{ 
+            color: 'var(--color-cocoa-soft)' 
+            }}>Cadastre, edite e organize o cardápio.</p>
         </Link>
-        <Link to="/admin/pedidos" className="card" style={{ padding: 28, display: 'block' }}>
+        <Link to="/admin/pedidos" className="card" style={{ 
+          padding: 28, 
+          display: 'block' 
+          }}>
           <h3>Pedidos</h3>
-          <p style={{ color: 'var(--color-cocoa-soft)' }}>Acompanhe e atualize o status das encomendas.</p>
+          <p style={{ 
+            color: 'var(--color-cocoa-soft)' 
+            }}>Acompanhe e atualize o status das encomendas.</p>
         </Link>
       </div>
     </div>

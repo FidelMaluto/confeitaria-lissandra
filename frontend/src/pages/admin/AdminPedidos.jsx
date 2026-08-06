@@ -47,13 +47,26 @@ export default function AdminPedidos() {
       ) : pedidos.length === 0 ? (
         <p style={{ color: 'var(--color-cocoa-soft)' }}>Nenhum pedido encontrado.</p>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column',
+          gap: 16 
+          }}>
           {pedidos.map((p) => (
             <div key={p.id} className="card" style={{ padding: 20 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                flexWrap: 'wrap', 
+                gap: 12 
+                }}>
                 <div>
                   <strong>#{p.id.slice(0, 8)} — {p.customer_name}</strong>
-                  <p style={{ color: 'var(--color-cocoa-soft)', fontSize: '0.9rem', margin: '4px 0' }}>
+                  <p style={{ 
+                    color: 'var(--color-cocoa-soft)', 
+                    fontSize: '0.9rem', 
+                    margin: '4px 0' 
+                    }}>
                     {p.customer_phone} · {new Date(p.created_at).toLocaleString('pt-BR')}
                   </p>
                 </div>
@@ -66,14 +79,20 @@ export default function AdminPedidos() {
 
               <ul style={{ margin: '12px 0' }}>
                 {p.order_items.map((item) => (
-                  <li key={item.id}>{item.quantity}x {item.product_name} — R$ {Number(item.subtotal).toFixed(2)}</li>
+                  <li key={item.id}>{item.quantity}x {item.product_name} — KZ$ {Number(item.subtotal).toFixed(2)}</li>
                 ))}
               </ul>
 
               {p.customer_address && (
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-cocoa-soft)' }}>📍 {p.customer_address}</p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: 'var(--color-cocoa-soft)'
+                }}>Localização: {p.customer_address}</p>
               )}
-              {p.notes && <p style={{ fontSize: '0.9rem', color: 'var(--color-cocoa-soft)' }}>📝 {p.notes}</p>}
+              {p.notes && <p style={{
+                fontSize: '0.9rem',
+                color: 'var(--color-cocoa-soft)'
+              }}>Nota: {p.notes}</p>}
 
               <strong>Total: KZ$ {Number(p.total).toFixed(2)}</strong>
             </div>
