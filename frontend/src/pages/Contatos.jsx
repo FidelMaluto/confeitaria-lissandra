@@ -43,8 +43,6 @@ export default function Contactos() {
 
   return (
 
-    
-
     <>
       <style>{`
 
@@ -414,13 +412,10 @@ export default function Contactos() {
           display: inline-block;
           margin-top: 20px;
           padding: 11px 20px;
-
           border: 1px solid #e8899e;
           border-radius: 22px;
-
           background: #fff;
           color: #d96882;
-
           font-size: 0.85rem;
           font-weight: 700;
           text-decoration: none;
@@ -546,13 +541,9 @@ export default function Contactos() {
 
         <section className="contact-hero">
 
-          <p className="contact-label">
-            ESTAMOS AQUI PARA SI
-          </p>
+          <p className="contact-label">ESTAMOS AQUI PARA SI</p>
 
-          <h1 className="contact-title">
-            Fale connosco
-          </h1>
+          <h1 className="contact-title">Fale connosco</h1>
 
           <p className="contact-description">
             Tem uma dúvida, quer fazer uma encomenda personalizada
@@ -568,9 +559,7 @@ export default function Contactos() {
 
             <div className="contact-info">
 
-              <h2 className="contact-info-title">
-                Entre em contacto
-              </h2>
+              <h2 className="contact-info-title">Entre em contacto</h2>
 
               <p className="contact-info-description">
                 Escolha a forma que preferir para falar connosco.
@@ -582,80 +571,52 @@ export default function Contactos() {
 
                 <div className="contact-card">
 
-                  <div className="contact-icon">
-                    ☎
-                  </div>
+                  <div className="contact-icon">☎</div>
 
                   <div>
-                    <h3>
-                      Telefone
-                    </h3>
+                    <h3>Telefone</h3>
 
-                    <p>
-                      +244 935 956 349
-                    </p>
+                    <p>+244 935 956 349</p>
                   </div>
 
                 </div>
 
                 <div className="contact-card">
 
-                  <div className="contact-icon">
-                    ✉
-                  </div>
+                  <div className="contact-icon">✉</div>
 
                   <div>
-                    <h3>
-                      E-mail
-                    </h3>
+                    <h3>E-mail</h3>
 
-                    <p>
-                      lissandradocestentacoes@hotmail.com
-                    </p>
+                    <p> lissandradocestentacoes@hotmail.com</p>
                   </div>
 
                 </div>
 
                 <div className="contact-card">
 
-                  <div className="contact-icon">
-                    📍
-                  </div>
+                  <div className="contact-icon">📍</div>
 
                   <div>
-                    <h3>
-                      Endereço
-                    </h3>
+                    <h3>Endereço</h3>
 
-                    <p>
-                     Zango 0, Icolo e Bengo, Angola
-                    </p>
+                    <p>Zango 0, Icolo e Bengo, Angola</p>
 
-                    <p>
-                      Consulte a nossa localização no mapa.
-                    </p>
+                    <p>Consulte a nossa localização no mapa.</p>
                   </div>
 
                 </div>
 
                 <div className="contact-card">
 
-                  <div className="contact-icon">
-                    🕐
-                  </div>
+                  <div className="contact-icon">🕐</div>
 
                   <div>
-                    <h3>
-                      Horário de atendimento
-                    </h3>
+                    <h3>Horário de atendimento</h3>
 
-                    <p>
-                      Terça - Sexta: 12:00 - 19:00,
-                    </p>
+                    <p>Terça - Sexta: 12:00 - 19:00,</p>
 
-                    <p>
-                      Sábado: 12:00 - 20:00
-                    </p>
+                    <p>Sábado: 12:00 - 20:00</p>
                   </div>
 
                 </div>
@@ -666,16 +627,13 @@ export default function Contactos() {
                 href="https://wa.me/244935956349"
                 target="_blank"
                 rel="noreferrer"
-                className="whatsapp-button"
-              >
+                className="whatsapp-button">
                 Falar pelo WhatsApp
               </a>
 
               <div className="social-section">
 
-                <h3 className="social-title">
-                  Siga-nos nas redes sociais
-                </h3>
+                <h3 className="social-title">Siga-nos nas redes sociais</h3>
 
                 <div className="social-links">
 
@@ -699,9 +657,7 @@ export default function Contactos() {
 
             <div className="contact-form-container">
 
-              <h2 className="form-title">
-                Envie uma mensagem
-              </h2>
+              <h2 className="form-title">Envie uma mensagem</h2>
 
               <p className="form-subtitle">
                 Preencha o formulário e entraremos em contacto consigo.
@@ -722,9 +678,7 @@ export default function Contactos() {
 
                   <div className="form-group">
 
-                    <label className="form-label">
-                      Nome
-                    </label>
+                    <label className="form-label">Nome</label>
 
                     <input
                       className="form-input"
@@ -740,9 +694,7 @@ export default function Contactos() {
 
                   <div className="form-group">
 
-                    <label className="form-label">
-                      E-mail
-                    </label>
+                    <label className="form-label">E-mail</label>
 
                     <input
                       className="form-input"
@@ -762,9 +714,7 @@ export default function Contactos() {
 
                   <div className="form-group">
 
-                    <label className="form-label">
-                      Telefone
-                    </label>
+                    <label className="form-label">Telefone</label>
 
                     <input
                       className="form-input"
@@ -779,9 +729,7 @@ export default function Contactos() {
 
                   <div className="form-group">
 
-                    <label className="form-label">
-                      Assunto
-                    </label>
+                    <label className="form-label">Assunto</label>
 
                     <select
                       className="form-select"
@@ -791,29 +739,17 @@ export default function Contactos() {
                       required
                     >
 
-                      <option value="">
-                        Seleccione um assunto
-                      </option>
+                      <option value="">Seleccione um assunto</option>
 
-                      <option value="encomenda">
-                        Fazer uma encomenda
-                      </option>
+                      <option value="encomenda">Fazer uma encomenda</option>
 
-                      <option value="personalizado">
-                        Bolo personalizado
-                      </option>
+                      <option value="personalizado">Bolo personalizado</option>
 
-                      <option value="orcamento">
-                        Pedir orçamento
-                      </option>
+                      <option value="orcamento">Pedir orçamento</option>
 
-                      <option value="duvida">
-                        Dúvida
-                      </option>
+                      <option value="duvida">Dúvida</option>
 
-                      <option value="outro">
-                        Outro assunto
-                      </option>
+                      <option value="outro">Outro assunto</option>
 
                     </select>
 
@@ -823,9 +759,7 @@ export default function Contactos() {
 
                 <div className="form-group">
 
-                  <label className="form-label">
-                    Data pretendida para a encomenda
-                  </label>
+                  <label className="form-label">Data pretendida para a encomenda</label>
 
                   <input
                     className="form-input"
@@ -839,9 +773,7 @@ export default function Contactos() {
 
                 <div className="form-group">
 
-                  <label className="form-label">
-                    Mensagem
-                  </label>
+                  <label className="form-label">Mensagem</label>
 
                   <textarea
                     className="form-textarea"
@@ -856,8 +788,7 @@ export default function Contactos() {
 
                 <button
                   type="submit"
-                  className="form-button"
-                >
+                  className="form-button">
                   Enviar mensagem
                 </button>
 
@@ -875,13 +806,9 @@ export default function Contactos() {
 
             <div className="section-heading">
 
-              <p className="section-label">
-                VISITE-NOS
-              </p>
+              <p className="section-label">VISITE-NOS</p>
 
-              <h2 className="section-title">
-                Onde estamos
-              </h2>
+              <h2 className="section-title">Onde estamos</h2>
 
             </div>
 
@@ -889,24 +816,17 @@ export default function Contactos() {
 
               <div className="map-content">
 
-                <div className="map-pin">
-                  📍
-                </div>
+                <div className="map-pin">📍</div>
 
-                <h3>
-                  Confeitaria da Lisandra
-                </h3>
+                <h3>Confeitaria da Lisandra</h3>
 
-                <p>
-                  Luanda, Angola
-                </p>
+                <p>Luanda, Angola</p>
 
                 <a
                   href="https://maps.app.goo.gl/bMdEPNDLdTLJrnuHA"
                   target="_blank"
                   rel="noreferrer"
-                  className="map-button"
-                >
+                  className="map-button">
                   Abrir no Google Maps
                 </a>
 
@@ -920,13 +840,9 @@ export default function Contactos() {
 
             <div className="section-heading">
 
-              <p className="section-label">
-                DÚVIDAS FREQUENTES
-              </p>
+              <p className="section-label">DÚVIDAS FREQUENTES</p>
 
-              <h2 className="section-title">
-                Antes de entrar em contacto
-              </h2>
+              <h2 className="section-title">Antes de entrar em contacto</h2>
 
             </div>
 
@@ -934,9 +850,7 @@ export default function Contactos() {
 
               <div className="faq-card">
 
-                <h3>
-                  Com quanto tempo devo fazer uma encomenda?
-                </h3>
+                <h3>Com quanto tempo devo fazer uma encomenda?</h3>
 
                 <p>
                   Recomendamos que faça a sua encomenda com pelo
@@ -948,9 +862,7 @@ export default function Contactos() {
 
               <div className="faq-card">
 
-                <h3>
-                  Fazem entregas?
-                </h3>
+                <h3>Fazem entregas?</h3>
 
                 <p>
                   Sim. A disponibilidade e o custo da entrega
@@ -961,9 +873,7 @@ export default function Contactos() {
 
               <div className="faq-card">
 
-                <h3>
-                  Posso personalizar o meu bolo?
-                </h3>
+                <h3>Posso personalizar o meu bolo?</h3>
 
                 <p>
                   Sim. Pode enviar a sua ideia, referência ou tema
@@ -981,9 +891,7 @@ export default function Contactos() {
 
         <section className="contact-bottom">
 
-          <h2>
-            Tem uma ideia doce?
-          </h2>
+          <h2>Tem uma ideia doce?</h2>
 
           <p>
             Conte-nos o que está a imaginar e vamos transformar
@@ -994,8 +902,7 @@ export default function Contactos() {
             href="https://wa.me/244900000000"
             target="_blank"
             rel="noreferrer"
-            className="bottom-button"
-          >
+            className="bottom-button">
             Começar uma conversa
           </a>
 
