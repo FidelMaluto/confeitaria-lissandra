@@ -19,7 +19,7 @@ export default function Perfil() {
     biografia:
       "Transformamos momentos especiais em memórias doces. Bolos personalizados, sobremesas e doces artesanais feitos com carinho.",
     foto: logo,
-    capa:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80"
+    capa: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80"
   });
 
   const [publicacoes, setPublicacoes] = useState([
@@ -80,9 +80,9 @@ export default function Perfil() {
       publicacoes.map((post) =>
         post.id === id
           ? {
-              ...post,
-              curtidas: post.curtidas + 1
-            }
+            ...post,
+            curtidas: post.curtidas + 1
+          }
           : post
       )
     );
@@ -90,7 +90,8 @@ export default function Perfil() {
 
   return (
     <>
-      <style>{`      .perfil-container{
+      <style>{`      
+      .perfil-container{
         min-height:100vh;
         background:#f8f5f3;
         color:#3f2b2d;
@@ -118,7 +119,6 @@ export default function Perfil() {
         box-shadow:0 5px 20px rgba(0,0,0,.15);
       }
 
-
       .dados-empresa{
         max-width:1100px;
         margin:-80px auto 0;
@@ -129,7 +129,6 @@ export default function Perfil() {
         padding:0 25px;
       }
 
-
       .foto-perfil{
         width:170px;
         height:170px;
@@ -139,7 +138,6 @@ export default function Perfil() {
         box-shadow:0 5px 20px rgba(0,0,0,.15);
       }
 
-
       .informacoes{
         background:white;
         padding:25px;
@@ -147,7 +145,6 @@ export default function Perfil() {
         flex:1;
         box-shadow:0 5px 20px rgba(0,0,0,.05);
       }
-
 
       .informacoes h1{
         margin:0;
@@ -157,28 +154,23 @@ export default function Perfil() {
         gap:10px;
       }
 
-
       .informacoes h1 span{
         color:#e98299;
         font-size:20px;
       }
 
-
       .informacoes p{
         color:#80686b;
       }
-
 
       .informacoes strong{
         color:#b96d7c;
       }
 
-
       .bio{
         max-width:650px;
         line-height:1.5;
       }
-
 
       .acoes{
         display:flex;
@@ -186,7 +178,6 @@ export default function Perfil() {
         margin-top:20px;
         flex-wrap:wrap;
       }
-
 
       .acoes button{
         border:none;
@@ -198,18 +189,14 @@ export default function Perfil() {
         font-weight:bold;
       }
 
-
       .acoes button:nth-child(2){
         background:#4b3033;
       }
-
 
       .acoes button:nth-child(3){
         background:#eee;
         color:#444;
       }
-
-
 
       .estatisticas{
         max-width:1100px;
@@ -220,7 +207,6 @@ export default function Perfil() {
         gap:20px;
       }
 
-
       .estatisticas div{
         background:white;
         padding:20px;
@@ -229,19 +215,15 @@ export default function Perfil() {
         box-shadow:0 5px 20px rgba(0,0,0,.05);
       }
 
-
       .estatisticas strong{
         display:block;
         font-size:25px;
         color:#e98299;
       }
 
-
       .estatisticas span{
         color:#80686b;
       }
-
-
 
       .menu-perfil{
         max-width:1100px;
@@ -252,7 +234,6 @@ export default function Perfil() {
         overflow-x:auto;
       }
 
-
       .menu-perfil button{
         border:none;
         padding:12px 20px;
@@ -262,13 +243,10 @@ export default function Perfil() {
         white-space:nowrap;
       }
 
-
       .menu-perfil .selecionado{
         background:#e98299;
         color:white;
       }
-
-
 
       .conteudo{
         max-width:1100px;
@@ -279,8 +257,6 @@ export default function Perfil() {
         gap:25px;
       }
 
-
-
       .cartao,
       .publicacao,
       .criar-post{
@@ -290,23 +266,18 @@ export default function Perfil() {
         box-shadow:0 5px 20px rgba(0,0,0,.05);
       }
 
-
       .cartao h3{
         margin-top:0;
       }
-
 
       .cartao p{
         color:#756064;
         line-height:1.6;
       }
 
-
-
       .criar-post{
         margin-bottom:20px;
       }
-
 
       .criar-post textarea{
         width:100%;
@@ -318,7 +289,6 @@ export default function Perfil() {
         outline:none;
       }
 
-
       .criar-post input{
         width:100%;
         margin-top:10px;
@@ -326,7 +296,6 @@ export default function Perfil() {
         border-radius:10px;
         border:1px solid #ddd;
       }
-
 
       .criar-post button{
         margin-top:15px;
@@ -337,10 +306,11 @@ export default function Perfil() {
         color:white;
         cursor:pointer;
         font-weight:bold;
-      }      .publicacao{
+      }      
+        
+      .publicacao{
         margin-bottom:25px;
       }
-
 
       .autor{
         display:flex;
@@ -349,7 +319,6 @@ export default function Perfil() {
         margin-bottom:15px;
       }
 
-
       .autor img{
         width:50px;
         height:50px;
@@ -357,23 +326,19 @@ export default function Perfil() {
         object-fit:cover;
       }
 
-
       .autor strong{
         display:block;
         color:#4b3033;
       }
 
-
       .autor small{
         color:#8a7074;
       }
-
 
       .publicacao p{
         line-height:1.6;
         color:#594347;
       }
-
 
       .imagem-post{
         width:100%;
@@ -383,13 +348,11 @@ export default function Perfil() {
         margin-top:15px;
       }
 
-
       .numeros{
         margin:15px 0;
         color:#80686b;
         font-size:.95rem;
       }
-
 
       .botoes-post{
         display:flex;
@@ -397,7 +360,6 @@ export default function Perfil() {
         padding-top:15px;
         gap:10px;
       }
-
 
       .botoes-post button{
         flex:1;
@@ -410,12 +372,9 @@ export default function Perfil() {
         font-weight:600;
       }
 
-
       .botoes-post button:hover{
         background:#f5dce2;
       }
-
-
 
       .editar-area{
         position:fixed;
@@ -428,7 +387,6 @@ export default function Perfil() {
         z-index:10;
       }
 
-
       .editar-box{
         width:100%;
         max-width:500px;
@@ -436,7 +394,6 @@ export default function Perfil() {
         border-radius:20px;
         padding:25px;
       }
-
 
       .editar-box input,
       .editar-box textarea{
@@ -447,12 +404,10 @@ export default function Perfil() {
         border:1px solid #ddd;
       }
 
-
       .editar-box textarea{
         resize:none;
         height:100px;
       }
-
 
       .editar-box button{
         padding:12px 20px;
@@ -464,14 +419,11 @@ export default function Perfil() {
         margin-right:10px;
       }
 
-
-
       @media(max-width:900px){
 
         .capa{
           height:240px;
         }
-
 
         .dados-empresa{
           margin-top:-60px;
@@ -480,27 +432,22 @@ export default function Perfil() {
           text-align:center;
         }
 
-
         .informacoes{
           width:100%;
         }
-
 
         .informacoes h1{
           justify-content:center;
           font-size:25px;
         }
 
-
         .acoes{
           justify-content:center;
         }
 
-
         .conteudo{
           grid-template-columns:1fr;
         }
-
 
         .cartao{
           order:2;
@@ -508,14 +455,11 @@ export default function Perfil() {
 
       }
 
-
-
       @media(max-width:600px){
 
         .capa{
           height:190px;
         }
-
 
         .capa button{
           right:15px;
@@ -524,48 +468,39 @@ export default function Perfil() {
           font-size:.8rem;
         }
 
-
         .foto-perfil{
           width:130px;
           height:130px;
         }
 
-
         .dados-empresa{
           padding:0 15px;
         }
-
 
         .informacoes{
           padding:18px;
         }
 
-
         .informacoes h1{
           font-size:21px;
         }
-
 
         .estatisticas{
           grid-template-columns:1fr;
           padding:0 15px;
         }
 
-
         .menu-perfil{
           padding:0 15px;
         }
-
 
         .conteudo{
           padding:0 15px;
         }
 
-
         .botoes-post{
           flex-direction:column;
         }
-
 
         .botoes-post button{
           width:100%;
@@ -573,19 +508,15 @@ export default function Perfil() {
 
       }
 
-
-
       @media(max-width:380px){
 
         .acoes button{
           width:100%;
         }
 
-
         .publicacao{
           padding:15px;
         }
-
 
         .autor img{
           width:42px;
@@ -594,62 +525,47 @@ export default function Perfil() {
 
       }
 
-
       `}</style>
-
 
       <div className="perfil-container">
 
-
-        <section 
+        <section
           className="capa"
           style={{
-            backgroundImage:`url(${empresa.capa})`
+            backgroundImage: `url(${empresa.capa})`
           }}
         >
 
-
         </section>
-
-
 
         <section className="dados-empresa">
 
-
-          <img 
+          <img
             className="foto-perfil"
             src={empresa.foto}
             alt="Perfil"
           />
 
-
-
           <div className="informacoes">
-
 
             <h1>
               {empresa.nome}
               <span>✓</span>
             </h1>
 
-
             <p>
               {empresa.username}
             </p>
-
 
             <strong>
               {empresa.categoria}
             </strong>
 
-
             <p className="bio">
               {empresa.biografia}
             </p>
 
-
             <div className="acoes">
-
 
               <button
                 onClick={() =>
@@ -658,7 +574,6 @@ export default function Perfil() {
               >
                 + Criar publicação
               </button>
-
 
               <button
                 onClick={() =>
@@ -670,13 +585,10 @@ export default function Perfil() {
 
             </div>
 
-
           </div>
-
 
         </section>
         <section className="estatisticas">
-
 
           <div>
             <strong>
@@ -688,8 +600,6 @@ export default function Perfil() {
             </span>
           </div>
 
-
-
           <div>
             <strong>
               {publicacoes.length}
@@ -699,8 +609,6 @@ export default function Perfil() {
               Publicações
             </span>
           </div>
-
-
 
           <div>
             <strong>
@@ -712,11 +620,9 @@ export default function Perfil() {
             </span>
           </div>
 
-
         </section>
 
         <main className="conteudo">
-
 
           <aside>
 
@@ -726,95 +632,79 @@ export default function Perfil() {
                 Sobre a empresa
               </h3>
 
-
               <p>
                 {empresa.endereco}
               </p>
-
 
               <p>
                 {empresa.telefone}
               </p>
 
-
               <p>
                 {empresa.email}
               </p>
-
 
               <p>
                 {empresa.horario}
               </p>
 
-
             </div>
 
           </aside>
 
-
-
-
-
           <section className="feed">
-
-
 
             {
               mostrarPublicacao && (
 
                 <form
-  className="criar-post"
-  onSubmit={publicar}
->
-  <textarea
-    placeholder="Partilhe uma novidade..."
-    value={novaPublicacao.texto}
-    onChange={(e) =>
-      setNovaPublicacao({
-        ...novaPublicacao,
-        texto: e.target.value
-      })
-    }
-  />
+                  className="criar-post"
+                  onSubmit={publicar}
+                >
+                  <textarea
+                    placeholder="Partilhe uma novidade..."
+                    value={novaPublicacao.texto}
+                    onChange={(e) =>
+                      setNovaPublicacao({
+                        ...novaPublicacao,
+                        texto: e.target.value
+                      })
+                    }
+                  />
 
-  <input
-    type="file"
-    accept="image/*"
-    onChange={(e) =>
-      setNovaPublicacao({
-        ...novaPublicacao,
-        imagem: e.target.files[0]
-      })
-    }
-  />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) =>
+                      setNovaPublicacao({
+                        ...novaPublicacao,
+                        imagem: e.target.files[0]
+                      })
+                    }
+                  />
 
-  {novaPublicacao.imagem && (
-    <img
-      src={URL.createObjectURL(novaPublicacao.imagem)}
-      alt="Preview"
-      style={{
-        width: '200px',
-        borderRadius: '10px',
-        marginTop: '10px'
-      }}
-    />
-  )}
+                  {novaPublicacao.imagem && (
+                    <img
+                      src={URL.createObjectURL(novaPublicacao.imagem)}
+                      alt="Preview"
+                      style={{
+                        width: '200px',
+                        borderRadius: '10px',
+                        marginTop: '10px'
+                      }}
+                    />
+                  )}
 
-  <button>
-    Publicar
-  </button>
-</form>
+                  <button>
+                    Publicar
+                  </button>
+                </form>
 
               )
             }
 
-
-
-
-
-
             {
-              publicacoes.map((post)=>(
+              publicacoes.map((post) => (
 
 
                 <article
@@ -822,17 +712,12 @@ export default function Perfil() {
                   key={post.id}
                 >
 
-
-
                   <div className="autor">
-
 
                     <img
                       src={empresa.foto}
                       alt=""
                     />
-
-
 
                     <div>
 
@@ -840,27 +725,17 @@ export default function Perfil() {
                         {empresa.nome} ✓
                       </strong>
 
-
                       <small>
                         {post.data}
                       </small>
 
                     </div>
 
-
                   </div>
-
-
-
-
 
                   <p>
                     {post.texto}
                   </p>
-
-
-
-
 
                   {
                     post.imagem && (
@@ -870,13 +745,8 @@ export default function Perfil() {
                         src={post.imagem}
                         alt="Publicação"
                       />
-
                     )
                   }
-
-
-
-
 
                   <div className="numeros">
 
@@ -888,172 +758,100 @@ export default function Perfil() {
 
                   </div>
 
-
-
-
-
                   <div className="botoes-post">
-
 
                     <button
                       onClick={() =>
                         curtir(post.id)
                       }
                     >
-
-                      ❤️ Curtir
-
+                    ❤️ Curtir
                     </button>
 
+                    <button>💬 Comentar</button>
 
-
-                    <button>
-
-                      💬 Comentar
-
-                    </button>
-
-
-
-                    <button>
-
-                      ↗ Partilhar
-
-                    </button>
-
+                    <button>↗ Partilhar</button>
 
                   </div>
 
-
-
                 </article>
-
 
               ))
             }
 
-
-
           </section>
 
-
         </main>
-
-
-
-
 
         {
           mostrarEditar && (
 
             <div className="editar-area">
 
-
               <div className="editar-box">
-
 
                 <h2>
                   Editar perfil
                 </h2>
 
-
-
                 <input
 
                   value={empresa.nome}
 
-                  onChange={(e)=>
+                  onChange={(e) =>
                     setEmpresa({
                       ...empresa,
-                      nome:e.target.value
+                      nome: e.target.value
                     })
                   }
 
-                  placeholder="Nome da empresa"
+                  placeholder="Nome da empresa" />
 
-                />
+                <input value={empresa.foto}
 
-
-
-
-                <input
-
-                  value={empresa.foto}
-
-                  onChange={(e)=>
+                  onChange={(e) =>
                     setEmpresa({
                       ...empresa,
-                      foto:e.target.value
+                      foto: e.target.value
                     })
                   }
 
-                  placeholder="URL da foto"
+                  placeholder="URL da foto"/>
 
-                />
+                <input value={empresa.capa}
 
-
-
-
-                <input
-
-                  value={empresa.capa}
-
-                  onChange={(e)=>
+                  onChange={(e) =>
                     setEmpresa({
                       ...empresa,
-                      capa:e.target.value
+                      capa: e.target.value
                     })
                   }
 
-                  placeholder="URL da capa"
-
-                />
-
-
-
+                  placeholder="URL da capa"/>
 
                 <textarea
 
                   value={empresa.biografia}
 
-                  onChange={(e)=>
+                  onChange={(e) =>
                     setEmpresa({
                       ...empresa,
-                      biografia:e.target.value
+                      biografia: e.target.value
                     })
                   }
-
                 />
 
-
-
+                <button
+                  onClick={() =>
+                    setMostrarEditar(false)
+                  }>Guardar</button>
 
                 <button
                   onClick={() =>
                     setMostrarEditar(false)
-                  }
-                >
-
-                  Guardar
-
-                </button>
-
-
-
-                <button
-                  onClick={() =>
-                    setMostrarEditar(false)
-                  }
-                >
-
-                  Cancelar
-
-                </button>
-
-
+                  }>Cancelar</button>
 
               </div>
-
 
             </div>
 
