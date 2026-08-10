@@ -11,6 +11,7 @@ export default function AdminDashboard() {
         gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
         gap: 20 
         }}>
+          
         <Link to="/admin/produtos" className="card" style={{
           padding: 28, 
           display: 'block' 
@@ -20,6 +21,7 @@ export default function AdminDashboard() {
             color: 'var(--color-cocoa-soft)' 
             }}>Cadastre, edite e organize o cardápio.</p>
         </Link>
+
         <Link to="/admin/pedidos" className="card" style={{ 
           padding: 28, 
           display: 'block' 
@@ -29,6 +31,7 @@ export default function AdminDashboard() {
             color: 'var(--color-cocoa-soft)' 
             }}>Acompanhe e atualize o status das encomendas.</p>
         </Link>
+
       </div>
     </div>
   );

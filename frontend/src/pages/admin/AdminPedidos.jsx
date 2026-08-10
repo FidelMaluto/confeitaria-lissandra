@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { api } from '../../lib/api';
 
 const STATUS_OPCOES = [
-  'pendente', 'confirmado', 
+  'pendente', 
+  'confirmado', 
   'em_preparo', 
   'pronto', 
   'entregue', 
@@ -83,7 +84,7 @@ export default function AdminPedidos() {
                     <option key={s} value={s}>{STATUS_LABEL[s]}</option>
                   ))}
                 </select>
-                
+
               </div>
 
               <ul style={{ margin: '12px 0' }}>
