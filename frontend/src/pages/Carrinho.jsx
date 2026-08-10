@@ -41,11 +41,13 @@ export default function Carrinho() {
                   </span>
                 </td>
                 <td>
+
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <button className="btn btn-ghost" onClick={() => updateQuantity(item.product_id, item.quantity - 1)}>−</button>
                     <span>{item.quantity}</span>
                     <button className="btn btn-ghost" onClick={() => updateQuantity(item.product_id, item.quantity + 1)}>+</button>
                   </div>
+
                 </td>
                 <td>KZ$ {(item.price * item.quantity).toFixed(2)}</td>
                 <td>
@@ -64,6 +66,7 @@ export default function Carrinho() {
           </span>
           <Link to="/checkout" className="btn btn-primary">Finalizar pedido</Link>
         </div>
+
       </div>
     </div>
   );

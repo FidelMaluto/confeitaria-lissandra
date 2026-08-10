@@ -42,26 +42,33 @@ export default function Cadastro() {
     <div className="container" style={{ padding: '60px 24px', maxWidth: 420 }}>
       <h1>Criar conta</h1>
       <form onSubmit={handleSubmit} className="card" style={{ padding: 28, marginTop: 20 }}>
+
         <div className="field">
           <label htmlFor="fullName">Nome completo</label>
           <input id="fullName" required value={fullName} onChange={(e) => setFullName(e.target.value)} />
         </div>
+
         <div className="field">
           <label htmlFor="email">E-mail</label>
           <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
+
         <div className="field">
           <label htmlFor="password">Senha</label>
           <input id="password" type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
+
         {erro && <p style={{ color: '#b23b3b', marginBottom: 12 }}>{erro}</p>}
+        
         <button className="btn btn-primary" type="submit" disabled={carregando} style={{ width: '100%' }}>
           {carregando ? 'Criando conta...' : 'Criar conta'}
         </button>
+
       </form>
       <p style={{ marginTop: 16, textAlign: 'center', color: 'var(--color-cocoa-soft)' }}>
         Já tem conta? <Link to="/login" style={{ color: 'var(--color-rose-deep)', fontWeight: 700 }}>Entrar</Link>
       </p>
+
     </div>
   );
 }
