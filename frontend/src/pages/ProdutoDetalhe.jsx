@@ -26,7 +26,13 @@ export default function ProdutoDetalhe() {
   if (!produto) return <p className="container" style={{ padding: 60 }}>Carregando...</p>;
 
   return (
-    <div className="container produto-grid fade-in-up" style={{ padding: '48px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+    <div className="container produto-grid fade-in-up" style={{ 
+      padding: '48px 24px', 
+      display: 'grid', 
+      gridTemplateColumns: '1fr 1fr', 
+      gap: 48 
+      }}>
+
       <div
         style={{
           aspectRatio: '1',
@@ -46,17 +52,39 @@ export default function ProdutoDetalhe() {
       <div>
         {produto.categories?.name && <span className="badge">{produto.categories.name}</span>}
         <h1 style={{ marginTop: 12 }}>{produto.name}</h1>
-        <p style={{ color: 'var(--color-cocoa-soft)', fontSize: '1.05rem' }}>{produto.description}</p>
-        <p style={{ fontSize: '1.8rem', color: 'var(--color-rose-deep)', fontWeight: 700, margin: '20px 0' }}>
+        <p style={{ 
+          color: 'var(--color-cocoa-soft)', 
+          fontSize: '1.05rem' }}>{produto.description}</p>
+        <p style={{ 
+          fontSize: '1.8rem', 
+          color: 'var(--color-rose-deep)', 
+          fontWeight: 700, 
+          margin: '20px 0' 
+          }}>
           KZ$ {Number(produto.price).toFixed(2)}
         </p>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid var(--color-border)', borderRadius: 999 }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          gap: 16, 
+          marginBottom: 24 
+          }}>
+
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center',
+            border: '1.5px solid var(--color-border)', 
+            borderRadius: 999 
+            }}>
+
             <button className="btn btn-ghost" onClick={() => setQuantidade((q) => Math.max(1, q - 1))}>−</button>
+
             <span style={{ minWidth: 30, textAlign: 'center' }}>{quantidade}</span>
+
             <button className="btn btn-ghost" onClick={() => setQuantidade((q) => q + 1)}>+</button>
           </div>
+          
           <button className="btn btn-primary" onClick={() => addItem(produto, quantidade)}>
             Adicionar ao carrinho
           </button>
