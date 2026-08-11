@@ -604,9 +604,7 @@ th {
   display: none;
 }
 
-/* 
-   BREAKPOINTS
-    */
+
 @media (max-width: 900px) {
   .container {
     padding: 0 20px;
@@ -618,25 +616,25 @@ th {
     padding-top: 48px !important;
   }
 
-  .hero-grid>div:first-child {
+  .hero-grid > div:first-child {
     order: 2;
   }
 
-  .hero-grid>div:last-child {
+  .hero-grid > div:last-child {
     order: 1;
     width: min(60vw, 260px);
     margin: 0 auto;
   }
 
-  .hero-grid>div:first-child>div {
+  .hero-grid > div:first-child > div {
     justify-content: center;
   }
 
   .produto-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 24px !important;
   }
-}
+
 
 @media (max-width: 768px) {
   .container {
@@ -682,9 +680,14 @@ th {
   .nav-drawer-backdrop.is-open {
     display: block;
     position: fixed;
-    inset: 0;
+    /* inset: 0; */
     background: rgba(46, 36, 34, 0.4);
     z-index: 30;
+  }
+
+  .produto-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
   }
 
   table,
@@ -718,6 +721,19 @@ th {
   }
 }
 
+@media (max-width: 600px) {
+  .produto-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .produto-card {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 480px) {
   .btn {
     width: 100%;
@@ -736,4 +752,6 @@ th {
   .container {
     max-width: 1280px;
   }
+}
+
 }
