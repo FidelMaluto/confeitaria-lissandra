@@ -531,13 +531,9 @@ export default function Sobre() {
 
           <div className="about-hero-content">
 
-            <p className="about-label">
-              A NOSSA HISTÓRIA
-            </p>
+            <p className="about-label">A NOSSA HISTÓRIA</p>
 
-            <h1 className="about-hero-title">
-              Feito com amor,
-              <br />
+            <h1 className="about-hero-title">Feito com amor,<br />
               servido com carinho.
             </h1>
 
@@ -548,10 +544,7 @@ export default function Sobre() {
               de tornar os seus momentos ainda mais especiais.
             </p>
 
-            <Link
-              to="/catalogo"
-              className="about-hero-button"
-            >
+            <Link to="/catalogo" className="about-hero-button">
               Conheça os nossos produtos
             </Link>
 
@@ -573,13 +566,9 @@ export default function Sobre() {
 
               <div>
 
-                <p className="section-label">
-                  DE ONDE VIEMOS
-                </p>
+                <p className="section-label">DE ONDE VIEMOS</p>
 
-                <h2 className="section-title">
-                  Uma paixão que começou na cozinha
-                </h2>
+                <h2 className="section-title">Uma paixão que começou na cozinha</h2>
 
                 <p className="section-text">
                   A nossa história começou com uma paixão simples:
@@ -612,37 +601,25 @@ export default function Sobre() {
 
               <div className="number-card">
 
-                <span className="number">
-                  5+
-                </span>
+                <span className="number">5+</span>
 
-                <span className="number-description">
-                  Anos de experiência
-                </span>
+                <span className="number-description">Anos de experiência</span>
 
               </div>
 
               <div className="number-card">
 
-                <span className="number">
-                  100%
-                </span>
+                <span className="number">100%</span>
 
-                <span className="number-description">
-                  Dedicação
-                </span>
+                <span className="number-description">Dedicação</span>
 
               </div>
 
               <div className="number-card">
 
-                <span className="number">
-                  ∞
-                </span>
+                <span className="number">∞</span>
 
-                <span className="number-description">
-                  Momentos especiais
-                </span>
+                <span className="number-description">Momentos especiais</span>
 
               </div>
 
@@ -654,13 +631,9 @@ export default function Sobre() {
 
             <div className="values-heading">
 
-              <p className="section-label">
-                O QUE NOS DEFINE
-              </p>
+              <p className="section-label">O QUE NOS DEFINE</p>
 
-              <h2 className="section-title">
-                Mais do que doces
-              </h2>
+              <h2 className="section-title">Mais do que doces</h2>
 
               <p className="section-text">
                 Cada detalhe importa. Desde a escolha dos ingredientes
@@ -675,13 +648,9 @@ export default function Sobre() {
 
               <div className="value-card">
 
-                <div className="value-icon">
-                  ♡
-                </div>
+                <div className="value-icon">♡</div>
 
-                <h3 className="value-title">
-                  Feito com amor
-                </h3>
+                <h3 className="value-title">Feito com amor</h3>
 
                 <p className="value-text">
                   Colocamos paixão em cada receita e cuidado em
@@ -693,13 +662,9 @@ export default function Sobre() {
 
               <div className="value-card">
 
-                <div className="value-icon">
-                  ✦
-                </div>
+                <div className="value-icon">✦</div>
 
-                <h3 className="value-title">
-                  Qualidade
-                </h3>
+                <h3 className="value-title">Qualidade</h3>
 
                 <p className="value-text">
                   Trabalhamos para oferecer produtos de qualidade,
@@ -711,13 +676,9 @@ export default function Sobre() {
 
               <div className="value-card">
 
-                <div className="value-icon">
-                  ♧
-                </div>
+                <div className="value-icon">♧</div>
 
-                <h3 className="value-title">
-                  Personalização
-                </h3>
+                <h3 className="value-title">Personalização</h3>
 
                 <p className="value-text">
                   Cada celebração é única. Por isso, criamos
@@ -737,13 +698,9 @@ export default function Sobre() {
 
               <div className="process-heading">
 
-                <p className="section-label">
-                  COMO TRABALHAMOS
-                </p>
+                <p className="section-label">COMO TRABALHAMOS</p>
 
-                <h2 className="section-title">
-                  Do seu pedido até à sua mesa
-                </h2>
+                <h2 className="section-title">Do seu pedido até à sua mesa</h2>
 
                 <p className="section-text">
                   Cuidamos de cada etapa para garantir que a sua
@@ -756,13 +713,9 @@ export default function Sobre() {
 
                 <div className="process-card">
 
-                  <div className="process-number">
-                    01
-                  </div>
+                  <div className="process-number">01</div>
 
-                  <h3>
-                    Escolha
-                  </h3>
+                  <h3>Escolha</h3>
 
                   <p>
                     Explore o nosso catálogo e encontre o produto
@@ -773,13 +726,9 @@ export default function Sobre() {
 
                 <div className="process-card">
 
-                  <div className="process-number">
-                    02
-                  </div>
+                  <div className="process-number">02</div>
 
-                  <h3>
-                    Personalize
-                  </h3>
+                  <h3>Personalize</h3>
 
                   <p>
                     Para pedidos especiais, converse connosco
@@ -790,13 +739,9 @@ export default function Sobre() {
 
                 <div className="process-card">
 
-                  <div className="process-number">
-                    03
-                  </div>
+                  <div className="process-number">03</div>
 
-                  <h3>
-                    Preparação
-                  </h3>
+                  <h3>Preparação</h3>
 
                   <p>
                     A nossa equipa prepara cuidadosamente a sua
@@ -807,13 +752,9 @@ export default function Sobre() {
 
                 <div className="process-card">
 
-                  <div className="process-number">
-                    04
-                  </div>
+                  <div className="process-number">04</div>
 
-                  <h3>
-                    Celebre
-                  </h3>
+                  <h3>Celebre</h3>
 
                   <p>
                     Receba a sua encomenda e aproveite o momento
@@ -832,13 +773,9 @@ export default function Sobre() {
 
             <div className="team-heading">
 
-              <p className="section-label">
-                A NOSSA EQUIPA
-              </p>
+              <p className="section-label">A NOSSA EQUIPA</p>
 
-              <h2 className="section-title">
-                Pessoas por trás de cada criação
-              </h2>
+              <h2 className="section-title">Pessoas por trás de cada criação</h2>
 
               <p className="section-text">
                 Por trás de cada produto existe uma equipa que
@@ -857,13 +794,9 @@ export default function Sobre() {
 
                 <div className="team-info">
 
-                  <h3 className="team-name">
-                    Equipa de Produção
-                  </h3>
+                  <h3 className="team-name">Equipa de Produção</h3>
 
-                  <p className="team-role">
-                    Criação & Qualidade
-                  </p>
+                  <p className="team-role">Criação & Qualidade</p>
 
                 </div>
 
@@ -876,13 +809,9 @@ export default function Sobre() {
 
                 <div className="team-info">
 
-                  <h3 className="team-name">
-                    Atendimento
-                  </h3>
+                  <h3 className="team-name">Atendimento</h3>
 
-                  <p className="team-role">
-                    A cuidar de si
-                  </p>
+                  <p className="team-role">A cuidar de si</p>
 
                 </div>
 
@@ -894,9 +823,7 @@ export default function Sobre() {
 
           <section className="cta-section">
 
-            <h2 className="cta-title">
-              Vamos criar algo especial?
-            </h2>
+            <h2 className="cta-title">Vamos criar algo especial?</h2>
 
             <p className="cta-text">
               Seja para uma celebração, um presente ou simplesmente
@@ -904,10 +831,7 @@ export default function Sobre() {
               algo especial para si.
             </p>
 
-            <Link
-              to="/contactos"
-              className="cta-button"
-            >
+            <Link to="/contactos" className="cta-button">
               Entre em contacto connosco
             </Link>
 

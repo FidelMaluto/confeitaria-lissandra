@@ -9,7 +9,7 @@ export default function Catalogo() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.listCategories().then(setCategorias).catch(() => {});
+    api.listCategories().then(setCategorias).catch(() => { });
   }, []);
 
   useEffect(() => {

@@ -18,7 +18,7 @@ export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
-    api.listProducts().then((data) => setDestaques(data.slice(0, 3))).catch(() => {});
+    api.listProducts().then((data) => setDestaques(data.slice(0, 3))).catch(() => { });
   }, []);
 
   // Troca a imagem do círculo a cada 5 segundos
@@ -91,10 +91,11 @@ export default function Home() {
             Cadastre produtos no painel admin para vê-los aqui.
           </p>
         ) : (
-          <div className="stagger-grid" style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
-            gap: 24 }}>
+          <div className="stagger-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 24
+          }}>
             {destaques.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

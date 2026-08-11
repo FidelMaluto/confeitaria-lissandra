@@ -102,26 +102,32 @@ export default function AdminProdutos() {
         gridTemplateColumns: '1fr 1fr',
         gap: '0 20px'
       }}>
+
         <div className="field">
           <label>Nome</label>
           <input name="name" required value={form.name} onChange={handleChange} />
         </div>
+
         <div className="field">
           <label>Slug (URL)</label>
           <input name="slug" placeholder="gerado automaticamente" value={form.slug} onChange={handleChange} />
         </div>
+
         <div className="field" style={{ gridColumn: '1 / -1' }}>
           <label>Descrição</label>
           <textarea name="description" rows={2} value={form.description} onChange={handleChange} />
         </div>
+
         <div className="field">
           <label>Preço (KZ$)</label>
           <input name="price" type="number" min="0" step="0.01" required value={form.price} onChange={handleChange} />
         </div>
+        
         <div className="field">
           <label>Estoque</label>
           <input name="stock" type="number" min="0" value={form.stock} onChange={handleChange} />
         </div>
+
         <div className="field">
           <label>Categoria</label>
           <select name="category_id" value={form.category_id} onChange={handleChange}>
@@ -131,10 +137,12 @@ export default function AdminProdutos() {
             ))}
           </select>
         </div>
+
         <div className="field">
           <label>URL da imagem</label>
           <input name="image_url" value={form.image_url} onChange={handleChange} placeholder="https://..." />
         </div>
+        
         <label style={{ 
           display: 'flex', 
           alignItems: 'center',
@@ -165,6 +173,7 @@ export default function AdminProdutos() {
             </button>
           )}
         </div>
+        
       </form>
 
       <table className="card" style={{ padding: 8 }}>

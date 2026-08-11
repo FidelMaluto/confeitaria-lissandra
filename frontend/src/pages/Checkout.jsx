@@ -51,7 +51,7 @@ export default function Checkout() {
           entrar em contato pelo telefone informado.
         </p>
         <p style={{ margin: '20px 0', fontWeight: 700 }}>
-          Total: R$ {Number(pedidoConfirmado.total).toFixed(2)}
+          Total: KZ$ {Number(pedidoConfirmado.total).toFixed(2)}
         </p>
         <Link to="/catalogo" className="btn btn-primary">Voltar ao catálogo</Link>
       </div>
@@ -105,7 +105,7 @@ export default function Checkout() {
         {erro && <p style={{ color: '#b23b3b', marginBottom: 12 }}>{erro}</p>}
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-          <strong style={{ fontSize: '1.2rem' }}>Total: R$ {total.toFixed(2)}</strong>
+          <strong style={{ fontSize: '1.2rem' }}>Total: KZ$ {total.toFixed(2)}</strong>
           <button className="btn btn-primary" type="submit" disabled={enviando}>
             {enviando ? 'Enviando...' : 'Confirmar pedido'}
           </button>

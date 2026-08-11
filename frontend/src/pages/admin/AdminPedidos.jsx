@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../lib/api';
 
-const STATUS_OPCOES = ['pendente', 'confirmado', 'em_preparo', 'pronto', 'entregue', 'cancelado'];
+const STATUS_OPCOES = [
+  'pendente', 
+  'confirmado', 
+  'em_preparo', 
+  'pronto', 
+  'entregue', 
+  'cancelado'
+];
+
 const STATUS_LABEL = {
   pendente: 'Pendente',
   confirmado: 'Confirmado',
@@ -70,11 +78,13 @@ export default function AdminPedidos() {
                     {p.customer_phone} · {new Date(p.created_at).toLocaleString('pt-BR')}
                   </p>
                 </div>
+
                 <select value={p.status} onChange={(e) => mudarStatus(p.id, e.target.value)}>
                   {STATUS_OPCOES.map((s) => (
                     <option key={s} value={s}>{STATUS_LABEL[s]}</option>
                   ))}
                 </select>
+
               </div>
 
               <ul style={{ margin: '12px 0' }}>
@@ -89,6 +99,7 @@ export default function AdminPedidos() {
                   color: 'var(--color-cocoa-soft)'
                 }}>Localização: {p.customer_address}</p>
               )}
+
               {p.notes && <p style={{
                 fontSize: '0.9rem',
                 color: 'var(--color-cocoa-soft)'
