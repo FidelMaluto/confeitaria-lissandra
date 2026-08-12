@@ -27,28 +27,26 @@ export default function Header() {
           Doces Tentações
         </Link>
 
-        <nav className={`nav-links ${menuAberto ? 'is-open' : ''}`}>
-          <NavLink to="/" style={linkStyle} end onClick={fechar}>Início</NavLink>
-          <NavLink to="/catalogo" style={linkStyle} onClick={fechar}>Catálogo</NavLink>
-          <NavLink to="/contatos" style={linkStyle} onClick={fechar}>Contatos</NavLink>
-          <NavLink to="/sobre" style={linkStyle} onClick={fechar}>Sobre</NavLink>
-          <NavLink to="/perfil" style={linkStyle} onClick={fechar}>Perfil</NavLink>
-          {isAdmin && <NavLink to="/admin" style={linkStyle} onClick={fechar}>Painel Admin</NavLink>}
+        {/* Menu do DESKTOP — só aparece em telas largas (controlado via CSS) */}
+        <nav className="nav-links-desktop">
+          <NavLink to="/" style={linkStyle} end>Início</NavLink>
+          <NavLink to="/catalogo" style={linkStyle}>Catálogo</NavLink>
+          <NavLink to="/contatos" style={linkStyle}>Contatos</NavLink>
+          <NavLink to="/sobre" style={linkStyle}>Sobre</NavLink>
+          <NavLink to="/perfil" style={linkStyle}>Perfil</NavLink>
+          {isAdmin && <NavLink to="/admin" style={linkStyle}>Painel Admin</NavLink>}
 
-          {/* Este bloco só aparece dentro da gaveta mobile (controlado 100% pelo CSS) */}
-          <div className="nav-drawer-extra">
-            <Link to="/carrinho" className="btn btn-secondary" onClick={fechar}>
-              Carrinho{count > 0 ? ` (${count})` : ''}
-            </Link>
-            {user ? (
-              <button className="btn btn-ghost" onClick={() => { signOut(); fechar(); }}>Sair</button>
-            ) : (
-              <Link to="/login" className="btn btn-primary" onClick={fechar}>Entrar</Link>
-            )}
+          <div className="nav-search">
+            <input type="text" placeholder="Pesquisar" />
+            <select defaultValue="">
+              <option value="" disabled>Filtrar</option>
+              <option>Produtos</option>
+              <option>Cursos</option>
+              <option>Vagas</option>
+            </select>
           </div>
         </nav>
 
-        {/* Este bloco só aparece na barra do desktop (controlado 100% pelo CSS) */}
         <div className="header-actions-desktop">
           <Link to="/carrinho" className="btn btn-secondary">
             Carrinho{count > 0 ? ` (${count})` : ''}
@@ -62,19 +60,42 @@ export default function Header() {
 
         <button
           className="nav-toggle"
-          aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={menuAberto}
-          onClick={() => setMenuAberto((v) => !v)}
+          aria-label="Abrir menu"
+          onClick={() => setMenuAberto(true)}
         >
-          {menuAberto ? '✕' : '☰'}
+          ☰
         </button>
       </div>
 
-      <div
-        className={`nav-drawer-backdrop ${menuAberto ? 'is-open' : ''}`}
-        onClick={fechar}
-        aria-hidden="true"
-      />
+      {/* Menu do MOBILE — só existe no HTML quando está aberto.
+          Fechado, não sobra nenhum elemento invisível na tela. */}
+      {menuAberto && (
+        <div className="mobile-menu-overlay">
+          <div className="mobile-menu-top">
+            <span className="site-logo">Doces Tentações</span>
+            <button className="nav-toggle" aria-label="Fechar menu" onClick={fechar}>✕</button>
+          </div>
+
+          <nav className="mobile-menu-links">
+            <NavLink to="/" className="mobile-menu-link" end onClick={fechar}>Início</NavLink>
+            <NavLink to="/catalogo" className="mobile-menu-link" onClick={fechar}>Catálogo</NavLink>
+            <NavLink to="/contatos" className="mobile-menu-link" onClick={fechar}>Contatos</NavLink>
+            <NavLink to="/sobre" className="mobile-menu-link" onClick={fechar}>Sobre</NavLink>
+            <NavLink to="/perfil" className="mobile-menu-link" onClick={fechar}>Perfil</NavLink>
+            {isAdmin && <NavLink to="/admin" className="mobile-menu-link" onClick={fechar}>Painel Admin</NavLink>}
+            <Link to="/carrinho" className="mobile-menu-link" onClick={fechar}>
+              Carrinho{count > 0 ? ` (${count})` : ''}
+            </Link>
+            {user ? (
+              <button className="mobile-menu-link mobile-menu-link-button" onClick={() => { signOut(); fechar(); }}>
+                Sair
+              </button>
+            ) : (
+              <Link to="/login" className="mobile-menu-link" onClick={fechar}>Entrar</Link>
+            )}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
