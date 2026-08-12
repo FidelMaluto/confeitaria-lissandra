@@ -58,13 +58,7 @@ export default function Header() {
           )}
         </div>
 
-        <button
-          className="nav-toggle"
-          aria-label="Abrir menu"
-          onClick={() => setMenuAberto(true)}
-        >
-          ☰
-        </button>
+        <button className="nav-toggle" aria-label="Abrir menu" onClick={() => setMenuAberto(true)}>☰</button>
       </div>
 
       {/* Menu do MOBILE — só existe no HTML quando está aberto.
