@@ -684,3 +684,108 @@ th {
     max-width: 1280px;
   }
 }
+/* ================================
+   FORMULÁRIO DE PRODUTOS
+================================ */
+
+.produto-form {
+  padding: 24px;
+  margin: 24px 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Campos que ocupam toda a largura */
+.produto-form .campo-full {
+  grid-column: 1 / -1;
+}
+
+/* Campos */
+.produto-form .field {
+  min-width: 0;
+}
+
+.produto-form input,
+.produto-form textarea,
+.produto-form select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Upload */
+.produto-form input[type="file"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Preview da imagem */
+.produto-form img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Botões */
+.produto-form .form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 768px) {
+  .produto-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .produto-form .campo-full {
+    grid-column: auto;
+  }
+
+  .produto-form .form-actions {
+    grid-column: auto;
+  }
+}
+
+/* ================================
+   TELEMÓVEL
+================================ */
+
+@media (max-width: 480px) {
+  .produto-form {
+    padding: 16px;
+    margin: 16px 0;
+    gap: 14px;
+  }
+
+  .produto-form .field {
+    width: 100%;
+  }
+
+  .produto-form input,
+  .produto-form textarea,
+  .produto-form select {
+    font-size: 16px;
+  }
+
+  .produto-form .form-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .produto-form .form-actions button {
+    width: 100%;
+  }
+}

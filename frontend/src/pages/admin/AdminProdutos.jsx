@@ -28,7 +28,7 @@ export default function AdminProdutos() {
 
     api.listCategories()
       .then(setCategorias)
-      .catch(() => {});
+      .catch(() => { });
   }
 
   useEffect(carregar, []);
@@ -158,17 +158,7 @@ export default function AdminProdutos() {
     <div className="container" style={{ padding: '48px 24px' }}>
       <h1>Produtos</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="card"
-        style={{
-          padding: 24,
-          margin: '24px 0',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '0 20px',
-        }}
-      >
+      <form onSubmit={handleSubmit} className="card produto-form">
         <div className="field">
           <label>Nome</label>
 
