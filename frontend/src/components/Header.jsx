@@ -35,16 +35,7 @@ export default function Header() {
           <NavLink to="/sobre" style={linkStyle}>Sobre</NavLink>
           <NavLink to="/perfil" style={linkStyle}>Perfil</NavLink>
           {isAdmin && <NavLink to="/admin" style={linkStyle}>Painel Admin</NavLink>}
-
-          <div className="nav-search">
-            <input type="text" placeholder="Pesquisar" />
-            <select defaultValue="">
-              <option value="" disabled>Filtrar</option>
-              <option>Produtos</option>
-              <option>Cursos</option>
-              <option>Vagas</option>
-            </select>
-          </div>
+          
         </nav>
 
         <div className="header-actions-desktop">
