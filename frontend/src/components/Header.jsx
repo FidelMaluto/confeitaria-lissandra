@@ -35,7 +35,7 @@ export default function Header() {
           <NavLink to="/sobre" style={linkStyle}>Sobre</NavLink>
           <NavLink to="/perfil" style={linkStyle}>Perfil</NavLink>
           {isAdmin && <NavLink to="/admin" style={linkStyle}>Painel Admin</NavLink>}
-          
+
         </nav>
 
         <div className="header-actions-desktop">
