@@ -3,7 +3,6 @@ import logo from "../images/image copy.png";
 
 export default function Perfil() {
 
-  const [mostrarPublicacao, setMostrarPublicacao] = useState(false);
   const [mostrarEditar, setMostrarEditar] = useState(false);
 
   const [empresa, setEmpresa] = useState({
@@ -46,35 +45,6 @@ export default function Perfil() {
     }
   ]);
 
-  // const [novaPublicacao, setNovaPublicacao] = useState({
-  //   texto: "",
-  //   imagem: ""
-  // });
-
-  // function publicar(e) {
-  //   e.preventDefault();
-
-  //   if (!novaPublicacao.texto.trim()) return;
-
-  //   const nova = {
-  //     id: Date.now(),
-  //     texto: novaPublicacao.texto,
-  //     imagem: novaPublicacao.imagem,
-  //     data: "Agora",
-  //     curtidas: 0,
-  //     comentarios: 0
-  //   };
-
-    // setPublicacoes([nova, ...publicacoes]);
-
-    // setNovaPublicacao({
-    //   texto: "",
-    //   imagem: ""
-    // });
-
-    setMostrarPublicacao(false);
-  }
-
   function curtir(id) {
     setPublicacoes(
       publicacoes.map((post) =>
@@ -103,20 +73,6 @@ export default function Perfil() {
         background-size:cover;
         background-position:center;
         position:relative;
-      }
-
-      .capa button{
-        position:absolute;
-        right:30px;
-        bottom:25px;
-        border:none;
-        padding:12px 18px;
-        border-radius:10px;
-        background:#fff;
-        color:#5a3a3d;
-        font-weight:700;
-        cursor:pointer;
-        box-shadow:0 5px 20px rgba(0,0,0,.15);
       }
 
       .dados-empresa{
@@ -258,8 +214,7 @@ export default function Perfil() {
       }
 
       .cartao,
-      .publicacao,
-      .criar-post{
+      .publicacao{
         background:white;
         border-radius:20px;
         padding:20px;
@@ -273,41 +228,9 @@ export default function Perfil() {
       .cartao p{
         color:#756064;
         line-height:1.6;
+        overflow-wrap:anywhere;
       }
 
-      .criar-post{
-        margin-bottom:20px;
-      }
-
-      .criar-post textarea{
-        width:100%;
-        min-height:120px;
-        resize:none;
-        padding:15px;
-        border:1px solid #ddd;
-        border-radius:12px;
-        outline:none;
-      }
-
-      .criar-post input{
-        width:100%;
-        margin-top:10px;
-        padding:12px;
-        border-radius:10px;
-        border:1px solid #ddd;
-      }
-
-      .criar-post button{
-        margin-top:15px;
-        padding:12px 25px;
-        border:none;
-        border-radius:10px;
-        background:#e98299;
-        color:white;
-        cursor:pointer;
-        font-weight:bold;
-      }      
-        
       .publicacao{
         margin-bottom:25px;
       }
@@ -441,10 +364,6 @@ export default function Perfil() {
           font-size:25px;
         }
 
-        .acoes{
-          justify-content:center;
-        }
-
         .conteudo{
           grid-template-columns:1fr;
         }
@@ -510,10 +429,6 @@ export default function Perfil() {
 
       @media(max-width:380px){
 
-        .acoes button{
-          width:100%;
-        }
-
         .publicacao{
           padding:15px;
         }
@@ -529,13 +444,13 @@ export default function Perfil() {
 
       <div className="perfil-container">
 
-        <section className="capa" style={{backgroundImage: `url(${empresa.capa})` }}>
+        <section className="capa" style={{ backgroundImage: `url(${empresa.capa})` }}>
 
         </section>
 
         <section className="dados-empresa">
 
-          <img className="foto-perfil"src={empresa.foto} alt="Perfil" />
+          <img className="foto-perfil" src={empresa.foto} alt="Perfil" />
 
           <div className="informacoes">
 
@@ -547,9 +462,7 @@ export default function Perfil() {
 
             <p className="bio">{empresa.biografia}</p>
 
-            <div className="acoes">
 
-            </div>
 
           </div>
 
@@ -601,37 +514,11 @@ export default function Perfil() {
           <section className="feed">
 
             {
-              mostrarPublicacao && (
-
-                <form className="criar-post" onSubmit={publicar}>
-                  <textarea placeholder="Partilhe uma novidade..."
-                    value={novaPublicacao.texto}
-                    onChange={(e) => setNovaPublicacao({...novaPublicacao, texto: e.target.value})} />
-
-                  <input type="file"
-                    accept="image/*" onChange={(e) => setNovaPublicacao({...novaPublicacao, imagem: e.target.files[0] })}/>
-
-                  {novaPublicacao.imagem && (
-                    <img src={URL.createObjectURL(novaPublicacao.imagem)} alt="Preview"
-                      style={{
-                        width: '200px',
-                        borderRadius: '10px',
-                        marginTop: '10px'
-                      }}/>
-                  )}
-
-                  <button>Publicar</button>
-                </form>
-
-              )
-            }
-
-            {
               publicacoes.map((post) => (
                 <article className="publicacao" key={post.id}>
                   <div className="autor">
 
-                    <img src={empresa.foto}alt="" />
+                    <img src={empresa.foto} alt="" />
 
                     <div>
 
@@ -680,25 +567,25 @@ export default function Perfil() {
 
                   value={empresa.nome}
 
-                  onChange={(e) => setEmpresa({...empresa, nome: e.target.value }) } placeholder="Nome da empresa" />
+                  onChange={(e) => setEmpresa({ ...empresa, nome: e.target.value })} placeholder="Nome da empresa" />
 
                 <input value={empresa.foto}
 
-                  onChange={(e) => setEmpresa({...empresa, foto: e.target.value}) }
+                  onChange={(e) => setEmpresa({ ...empresa, foto: e.target.value })}
 
-                  placeholder="URL da foto"/>
+                  placeholder="URL da foto" />
 
                 <input value={empresa.capa}
 
                   onChange={(e) => setEmpresa({ ...empresa, capa: e.target.value })}
 
-                  placeholder="URL da capa"/>
+                  placeholder="URL da capa" />
 
                 <textarea value={empresa.biografia}
 
-                  onChange={(e) => setEmpresa({...empresa, biografia: e.target.value }) }/>
+                  onChange={(e) => setEmpresa({ ...empresa, biografia: e.target.value })} />
 
-                <button onClick={() => setMostrarEditar(false) }>Guardar</button>
+                <button onClick={() => setMostrarEditar(false)}>Guardar</button>
 
                 <button onClick={() => setMostrarEditar(false)}>Cancelar</button>
 
@@ -713,3 +600,4 @@ export default function Perfil() {
 
     </>
   );
+}
