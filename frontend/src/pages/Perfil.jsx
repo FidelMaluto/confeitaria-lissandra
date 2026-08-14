@@ -46,31 +46,31 @@ export default function Perfil() {
     }
   ]);
 
-  const [novaPublicacao, setNovaPublicacao] = useState({
-    texto: "",
-    imagem: ""
-  });
+  // const [novaPublicacao, setNovaPublicacao] = useState({
+  //   texto: "",
+  //   imagem: ""
+  // });
 
-  function publicar(e) {
-    e.preventDefault();
+  // function publicar(e) {
+  //   e.preventDefault();
 
-    if (!novaPublicacao.texto.trim()) return;
+  //   if (!novaPublicacao.texto.trim()) return;
 
-    const nova = {
-      id: Date.now(),
-      texto: novaPublicacao.texto,
-      imagem: novaPublicacao.imagem,
-      data: "Agora",
-      curtidas: 0,
-      comentarios: 0
-    };
+  //   const nova = {
+  //     id: Date.now(),
+  //     texto: novaPublicacao.texto,
+  //     imagem: novaPublicacao.imagem,
+  //     data: "Agora",
+  //     curtidas: 0,
+  //     comentarios: 0
+  //   };
 
-    setPublicacoes([nova, ...publicacoes]);
+    // setPublicacoes([nova, ...publicacoes]);
 
-    setNovaPublicacao({
-      texto: "",
-      imagem: ""
-    });
+    // setNovaPublicacao({
+    //   texto: "",
+    //   imagem: ""
+    // });
 
     setMostrarPublicacao(false);
   }
@@ -529,59 +529,25 @@ export default function Perfil() {
 
       <div className="perfil-container">
 
-        <section
-          className="capa"
-          style={{
-            backgroundImage: `url(${empresa.capa})`
-          }}
-        >
+        <section className="capa" style={{backgroundImage: `url(${empresa.capa})` }}>
 
         </section>
 
         <section className="dados-empresa">
 
-          <img
-            className="foto-perfil"
-            src={empresa.foto}
-            alt="Perfil"
-          />
+          <img className="foto-perfil"src={empresa.foto} alt="Perfil" />
 
           <div className="informacoes">
 
-            <h1>
-              {empresa.nome}
-              <span>✓</span>
-            </h1>
+            <h1>{empresa.nome}<span>✓</span></h1>
 
-            <p>
-              {empresa.username}
-            </p>
+            <p>{empresa.username}</p>
 
-            <strong>
-              {empresa.categoria}
-            </strong>
+            <strong>{empresa.categoria}</strong>
 
-            <p className="bio">
-              {empresa.biografia}
-            </p>
+            <p className="bio">{empresa.biografia}</p>
 
             <div className="acoes">
-
-              <button
-                onClick={() =>
-                  setMostrarPublicacao(true)
-                }
-              >
-                + Criar publicação
-              </button>
-
-              <button
-                onClick={() =>
-                  setMostrarEditar(true)
-                }
-              >
-                ✏ Editar perfil
-              </button>
 
             </div>
 
@@ -595,29 +561,19 @@ export default function Perfil() {
               {empresa.seguidores}
             </strong>
 
-            <span>
-              Seguidores
-            </span>
+            <span>Seguidores</span>
           </div>
 
           <div>
-            <strong>
-              {publicacoes.length}
-            </strong>
+            <strong>{publicacoes.length}</strong>
 
-            <span>
-              Publicações
-            </span>
+            <span>Publicações</span>
           </div>
 
           <div>
-            <strong>
-              {empresa.avaliacao}
-            </strong>
+            <strong>{empresa.avaliacao}</strong>
 
-            <span>
-              Avaliação
-            </span>
+            <span> Avaliação</span>
           </div>
 
         </section>
@@ -628,25 +584,15 @@ export default function Perfil() {
 
             <div className="cartao">
 
-              <h3>
-                Sobre a empresa
-              </h3>
+              <h3>Sobre a empresa</h3>
 
-              <p>
-                {empresa.endereco}
-              </p>
+              <p>{empresa.endereco}</p>
 
-              <p>
-                {empresa.telefone}
-              </p>
+              <p>{empresa.telefone}</p>
 
-              <p>
-                {empresa.email}
-              </p>
+              <p>{empresa.email}</p>
 
-              <p>
-                {empresa.horario}
-              </p>
+              <p>{empresa.horario}</p>
 
             </div>
 
@@ -657,47 +603,24 @@ export default function Perfil() {
             {
               mostrarPublicacao && (
 
-                <form
-                  className="criar-post"
-                  onSubmit={publicar}
-                >
-                  <textarea
-                    placeholder="Partilhe uma novidade..."
+                <form className="criar-post" onSubmit={publicar}>
+                  <textarea placeholder="Partilhe uma novidade..."
                     value={novaPublicacao.texto}
-                    onChange={(e) =>
-                      setNovaPublicacao({
-                        ...novaPublicacao,
-                        texto: e.target.value
-                      })
-                    }
-                  />
+                    onChange={(e) => setNovaPublicacao({...novaPublicacao, texto: e.target.value})} />
 
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) =>
-                      setNovaPublicacao({
-                        ...novaPublicacao,
-                        imagem: e.target.files[0]
-                      })
-                    }
-                  />
+                  <input type="file"
+                    accept="image/*" onChange={(e) => setNovaPublicacao({...novaPublicacao, imagem: e.target.files[0] })}/>
 
                   {novaPublicacao.imagem && (
-                    <img
-                      src={URL.createObjectURL(novaPublicacao.imagem)}
-                      alt="Preview"
+                    <img src={URL.createObjectURL(novaPublicacao.imagem)} alt="Preview"
                       style={{
                         width: '200px',
                         borderRadius: '10px',
                         marginTop: '10px'
-                      }}
-                    />
+                      }}/>
                   )}
 
-                  <button>
-                    Publicar
-                  </button>
+                  <button>Publicar</button>
                 </form>
 
               )
@@ -705,151 +628,79 @@ export default function Perfil() {
 
             {
               publicacoes.map((post) => (
-
-
-                <article
-                  className="publicacao"
-                  key={post.id}
-                >
-
+                <article className="publicacao" key={post.id}>
                   <div className="autor">
 
-                    <img
-                      src={empresa.foto}
-                      alt=""
-                    />
+                    <img src={empresa.foto}alt="" />
 
                     <div>
 
-                      <strong>
-                        {empresa.nome} ✓
-                      </strong>
+                      <strong>{empresa.nome} ✓ </strong>
 
-                      <small>
-                        {post.data}
-                      </small>
+                      <small>{post.data} </small>
 
                     </div>
-
                   </div>
 
-                  <p>
-                    {post.texto}
-                  </p>
+                  <p>{post.texto} </p>
 
                   {
-                    post.imagem && (
-
-                      <img
-                        className="imagem-post"
-                        src={post.imagem}
-                        alt="Publicação"
-                      />
+                    post.imagem && (<img className="imagem-post" src={post.imagem} alt="Publicação" />
                     )
                   }
 
-                  <div className="numeros">
-
-                    ❤️ {post.curtidas}
-
-                    &nbsp;&nbsp;
-
-                    💬 {post.comentarios}
+                  <div className="numeros">❤️ {post.curtidas} &nbsp;&nbsp; 💬 {post.comentarios}
 
                   </div>
 
                   <div className="botoes-post">
 
-                    <button
-                      onClick={() =>
-                        curtir(post.id)
-                      }
-                    >
-                    ❤️ Curtir
-                    </button>
-
+                    <button onClick={() => curtir(post.id)}>❤️ Curtir</button>
                     <button>💬 Comentar</button>
-
                     <button>↗ Partilhar</button>
 
                   </div>
 
                 </article>
-
               ))
             }
 
           </section>
-
         </main>
 
         {
           mostrarEditar && (
 
             <div className="editar-area">
-
               <div className="editar-box">
 
-                <h2>
-                  Editar perfil
-                </h2>
+                <h2>Editar perfil</h2>
 
                 <input
 
                   value={empresa.nome}
 
-                  onChange={(e) =>
-                    setEmpresa({
-                      ...empresa,
-                      nome: e.target.value
-                    })
-                  }
-
-                  placeholder="Nome da empresa" />
+                  onChange={(e) => setEmpresa({...empresa, nome: e.target.value }) } placeholder="Nome da empresa" />
 
                 <input value={empresa.foto}
 
-                  onChange={(e) =>
-                    setEmpresa({
-                      ...empresa,
-                      foto: e.target.value
-                    })
-                  }
+                  onChange={(e) => setEmpresa({...empresa, foto: e.target.value}) }
 
                   placeholder="URL da foto"/>
 
                 <input value={empresa.capa}
 
-                  onChange={(e) =>
-                    setEmpresa({
-                      ...empresa,
-                      capa: e.target.value
-                    })
-                  }
+                  onChange={(e) => setEmpresa({ ...empresa, capa: e.target.value })}
 
                   placeholder="URL da capa"/>
 
-                <textarea
+                <textarea value={empresa.biografia}
 
-                  value={empresa.biografia}
+                  onChange={(e) => setEmpresa({...empresa, biografia: e.target.value }) }/>
 
-                  onChange={(e) =>
-                    setEmpresa({
-                      ...empresa,
-                      biografia: e.target.value
-                    })
-                  }
-                />
+                <button onClick={() => setMostrarEditar(false) }>Guardar</button>
 
-                <button
-                  onClick={() =>
-                    setMostrarEditar(false)
-                  }>Guardar</button>
-
-                <button
-                  onClick={() =>
-                    setMostrarEditar(false)
-                  }>Cancelar</button>
+                <button onClick={() => setMostrarEditar(false)}>Cancelar</button>
 
               </div>
 
@@ -862,4 +713,3 @@ export default function Perfil() {
 
     </>
   );
-}
