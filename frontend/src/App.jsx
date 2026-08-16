@@ -1,6 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ParticleCanvas from './components/ParticleCanvas';
 import { RequireAuth, RequireAdmin } from './components/ProtectedRoute';
 
 import Home from './pages/Home';
@@ -21,11 +23,28 @@ import AdminProdutos from './pages/admin/AdminProdutos';
 import AdminPedidos from './pages/admin/AdminPedidos';
 
 export default function App() {
+  const location = useLocation();
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    function handleMouseMove(e) {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    }
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+      <ParticleCanvas />
+      <div
+        className="cursor-spotlight-follower"
+        style={{ left: `${cursorPos.x}px`, top: `${cursorPos.y}px` }}
+      />
       <Header />
-      <main style={{ flex: 1 }}>
-        <Routes>
+      <main style={{ flex: 1, overflow: 'hidden' }}>
+        <div key={location.pathname} className="page-transition-wrapper">
+          <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/catalogo" element={<Catalogo />} />
 
@@ -72,6 +91,7 @@ export default function App() {
             }
           />
         </Routes>
+        </div>
       </main>
       <Footer />
     </div>

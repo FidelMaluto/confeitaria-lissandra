@@ -21,7 +21,7 @@ export default function Home() {
     api.listProducts().then((data) => setDestaques(data.slice(0, 3))).catch(() => { });
   }, []);
 
-  // Troca a imagem do círculo a cada 5 segundos
+  // Troca a imagem do círculo a cada 3 segundos
   useEffect(() => {
     if (heroImages.length <= 1) return;
     const intervalo = setInterval(() => {
