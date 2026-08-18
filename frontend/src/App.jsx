@@ -49,6 +49,7 @@ export default function App() {
           <Route path="/catalogo" element={<Catalogo />} />
 
           <Route path="/contatos" element={<Contatos />} />
+          <Route path="/contactos" element={<Contatos />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/perfil" element={<Perfil />} />
 
