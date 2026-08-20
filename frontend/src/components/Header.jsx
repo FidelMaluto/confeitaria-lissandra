@@ -21,7 +21,39 @@ export default function Header() {
   });
 
   return (
+
+    
+
     <header className="site-header">
+
+      {menuAberto && (
+        <div className="mobile-menu-overlay">
+          <div className="mobile-menu-top">
+            <span className="site-logo">Doces Tentações</span>
+            <button className="nav-toggle" aria-label="Fechar menu" onClick={fechar}>✕</button>
+          </div>
+
+          <nav className="mobile-menu-links">
+            <NavLink to="/" className="mobile-menu-link" end onClick={fechar}>Início</NavLink>
+            <NavLink to="/catalogo" className="mobile-menu-link" onClick={fechar}>Catálogo</NavLink>
+            <NavLink to="/contatos" className="mobile-menu-link" onClick={fechar}>Contatos</NavLink>
+            <NavLink to="/sobre" className="mobile-menu-link" onClick={fechar}>Sobre</NavLink>
+            <NavLink to="/perfil" className="mobile-menu-link" onClick={fechar}>Perfil</NavLink>
+            {isAdmin && <NavLink to="/admin" className="mobile-menu-link" onClick={fechar}>Painel Admin</NavLink>}
+            <Link to="/carrinho" className="mobile-menu-link" onClick={fechar}>
+              Carrinho{count > 0 ? ` (${count})` : ''}
+            </Link>
+            {user ? (
+              <button className="mobile-menu-link mobile-menu-link-button" onClick={() => { signOut(); fechar(); }}>
+                Sair
+              </button>
+            ) : (
+              <Link to="/login" className="mobile-menu-link" onClick={fechar}>Entrar</Link>
+            )}
+          </nav>
+        </div>
+      )}
+
       <div className="container site-header-bar">
         <Link to="/" className="site-logo" onClick={fechar}>
           Doces Tentações
@@ -54,33 +86,7 @@ export default function Header() {
 
       {/* Menu do MOBILE — só existe no HTML quando está aberto.
           Fechado, não sobra nenhum elemento invisível na tela. */}
-      {menuAberto && (
-        <div className="mobile-menu-overlay">
-          <div className="mobile-menu-top">
-            <span className="site-logo">Doces Tentações</span>
-            <button className="nav-toggle" aria-label="Fechar menu" onClick={fechar}>✕</button>
-          </div>
-
-          <nav className="mobile-menu-links">
-            <NavLink to="/" className="mobile-menu-link" end onClick={fechar}>Início</NavLink>
-            <NavLink to="/catalogo" className="mobile-menu-link" onClick={fechar}>Catálogo</NavLink>
-            <NavLink to="/contatos" className="mobile-menu-link" onClick={fechar}>Contatos</NavLink>
-            <NavLink to="/sobre" className="mobile-menu-link" onClick={fechar}>Sobre</NavLink>
-            <NavLink to="/perfil" className="mobile-menu-link" onClick={fechar}>Perfil</NavLink>
-            {isAdmin && <NavLink to="/admin" className="mobile-menu-link" onClick={fechar}>Painel Admin</NavLink>}
-            <Link to="/carrinho" className="mobile-menu-link" onClick={fechar}>
-              Carrinho{count > 0 ? ` (${count})` : ''}
-            </Link>
-            {user ? (
-              <button className="mobile-menu-link mobile-menu-link-button" onClick={() => { signOut(); fechar(); }}>
-                Sair
-              </button>
-            ) : (
-              <Link to="/login" className="mobile-menu-link" onClick={fechar}>Entrar</Link>
-            )}
-          </nav>
-        </div>
-      )}
+      
     </header>
   );
 }
