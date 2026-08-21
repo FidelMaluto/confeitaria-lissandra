@@ -41,7 +41,7 @@ export default function MeusPedidos() {
                   <li key={item.id}>{item.quantity}x {item.product_name}</li>
                 ))}
               </ul>
-              <strong>Total: R$ {Number(p.total).toFixed(2)}</strong>
+              <strong>Total: KZ$ {Number(p.total).toFixed(2)}</strong>
             </div>
           ))}
         </div>
