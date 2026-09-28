@@ -1,49 +1,92 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart();
+  const [addedAnimation, setAddedAnimation] = useState(false);
+
+  function handleAddToCart(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem(product);
+    setAddedAnimation(true);
+    setTimeout(() => setAddedAnimation(false), 1200);
+  }
 
   return (
-    <div className="card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <Link to={`/produto/${product.slug}`}>
-        <div style={{
-            aspectRatio: '4 / 3',
-            background: product.image_url
-              ? `url(${product.image_url}) center/cover`
-              : 'linear-gradient(135deg, var(--color-baby-pink), var(--color-blush))',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'var(--color-rose-deep)',
-            fontFamily: 'var(--font-display)',
-          }}>
-          {!product.image_url && '🧁'}
+    <div className="product-card-luxury">
+      <Link to={`/produto/${product.slug}`} className="product-card-image-wrap">
+        <div
+          className="product-card-image"
+          style={{
+            backgroundImage: product.image_url ? `url(${product.image_url})` : undefined,
+          }}
+        >
+          {!product.image_url && (
+            <div className="product-placeholder-icon">
+              <span>🎂</span>
+            </div>
+          )}
         </div>
+
+        <div className="product-image-overlay" />
+
+        {product.categories?.name && (
+          <span className="product-category-tag">
+            {product.categories.name}
+          </span>
+        )}
+
+        <span className="product-quick-view-badge">
+          <span>Ver Detalhes</span>
+          <i className="fa-solid fa-arrow-right" />
+        </span>
       </Link>
-      <div style={{ 
-        padding: 18, 
-        display: 'flex', 
-        flexDirection: 'column', 
-        gap: 8, flex: 1 
-        }}>
-        {product.categories?.name && <span className="badge">{product.categories.name}</span>}
+
+      <div className="product-card-content">
+        <div className="product-card-meta">
+          <span className="product-rating-stars">
+            ★★★★★ <span className="product-rating-num">(4.9)</span>
+          </span>
+        </div>
+
         <Link to={`/produto/${product.slug}`}>
-          <h3 style={{ fontSize: '1.1rem', margin: 0 }}>{product.name}</h3>
+          <h3 className="product-card-name">{product.name}</h3>
         </Link>
-        <p style={{ color: 'var(--color-cocoa-soft)', fontSize: '0.9rem', flex: 1 }}>
-          {product.description}
+
+        <p className="product-card-desc">
+          {product.description || 'Elaborado artesanalmente com ingredientes selecionados e técnicas de alta gastronomia.'}
         </p>
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between' 
-          }}>
-          <strong style={{ color: 'var(--color-rose-deep)', fontSize: '1.15rem' }}>
-            KZ$ {Number(product.price).toFixed(2)}
-          </strong>
-          <button className="btn btn-primary" onClick={() => addItem(product)}>
-            Adicionar
+
+        <div className="product-card-footer">
+          <div className="product-price-block">
+            <span className="product-price-currency">KZ$</span>
+            <strong className="product-price-amount">
+              {Number(product.price).toLocaleString('pt-PT', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </strong>
+          </div>
+
+          <button
+            type="button"
+            className={`btn-add-cart-luxury ${addedAnimation ? 'added' : ''}`}
+            onClick={handleAddToCart}
+            title="Adicionar ao Carrinho"
+          >
+            {addedAnimation ? (
+              <>
+                <i className="fa-solid fa-check" />
+                <span>Adicionado!</span>
+              </>
+            ) : (
+              <>
+                <i className="fa-solid fa-bag-shopping" />
+                <span>Adicionar</span>
+              </>
+            )}
           </button>
         </div>
       </div>

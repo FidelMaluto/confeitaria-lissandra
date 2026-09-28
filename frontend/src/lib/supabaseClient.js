@@ -1,13 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://cuxsclqljoguhajjkhio.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_y_rfXWEXOiN8-hbqfImZ-Q_rNJ_H99x';
 
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
   console.warn(
-    '[aviso] VITE_SUPABASE_URL ou VITE_SUPABASE_ANON_KEY não configurados. Copie frontend/.env.example para frontend/.env'
+    '[aviso] Variáveis de ambiente Supabase usando valores padrão. Crie frontend/.env se desejar customizar.'
   );
 }
 
-// Cliente público (anon key), Usado para autenticação e leitura direta de produtos/categorias.
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Cliente público (anon key)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+  },
+});
